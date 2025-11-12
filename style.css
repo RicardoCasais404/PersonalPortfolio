@@ -91,7 +91,7 @@ body {
 }
 
 .section:not(.header-hero) .content-container {
-  text-align: center;
+  text-align: left;
 }
 
 .main-title,
@@ -143,7 +143,7 @@ p {
   font-size: 1.2rem;
   line-height: 1.7;
   max-width: 65ch;
-  margin: 0 auto;
+  margin: 0;
 }
 
 /* ==========================================================================
@@ -202,9 +202,7 @@ p {
   display: inline-block;
   vertical-align: middle;
   font-weight: 300;
-  color: var(
-    --color-text
-  ); /* UPDATED: Changed from primary to main text color */
+  color: var(--color-text);
 }
 
 /* ==========================================================================
@@ -261,7 +259,7 @@ p {
   margin-top: 3rem;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1rem;
 }
 
@@ -277,7 +275,7 @@ p {
 .contact-links {
   margin-top: 2rem;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1rem;
 }
 
