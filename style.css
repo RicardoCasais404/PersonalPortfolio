@@ -175,19 +175,34 @@ p {
   display: flex;
   gap: 1.5rem;
 }
+
 .about-socials a {
+  position: relative; /* Required for the pseudo-element */
   color: var(--color-text);
   text-decoration: none;
   font-size: 1rem;
   font-weight: 600;
-  transition: opacity 0.3s ease;
+  padding-bottom: 5px; /* Add space for the underline */
 }
-.about-socials a:hover {
-  opacity: 0.7;
+
+/* NEW: Underline for the social links */
+.about-socials a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px; /* A thinner line for a more subtle effect */
+  background-color: var(--color-text);
+  transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.about-socials a:hover::after {
+  width: 100%;
 }
 
 /* ==========================================================================
-   Work Experience Section (Accordion)
+   Work Experience Section (Accordion) & Skills Marquee
    ========================================================================== */
 .work-experience-title {
   text-align: center;
@@ -255,60 +270,69 @@ p {
   transform: rotate(45deg);
 }
 
-/* ==========================================================================
-   Skills & Contact Section
-   ========================================================================== */
-.skill-grid {
-  margin-top: 3rem;
+@keyframes scrollMarquee {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.skills .section-title {
+  text-align: center;
+  width: 100%;
+}
+.skill-marquee {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 4rem;
+}
+.skill-list {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 1.5rem; /* Increased gap for cleaner look */
+  width: fit-content;
+  animation: scrollMarquee 20s linear infinite;
 }
-
 .skill-tag {
-  /* UPDATED: Cleaner, text-based style */
-  background-color: transparent;
-  border: none; /* Removed border */
-  color: var(--color-text);
-  font-weight: 500; /* Adjusted weight */
-  padding: 0; /* Removed padding */
-  transition: opacity 0.3s ease;
+  text-transform: uppercase;
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 700;
+  white-space: nowrap;
+}
+.skill-separator {
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-weight: 300;
+  margin: 0 2rem;
+  display: flex;
+  align-items: center;
 }
 
-.skill-tag:hover {
-  opacity: 0.7; /* Simple fade for hover */
-}
-
+/* ==========================================================================
+   Contact Section
+   ========================================================================== */
 .contact-links {
   margin-top: 2rem;
   display: flex;
   justify-content: flex-start;
   gap: 1rem;
 }
-
 .contact-link {
   color: var(--color-text);
   text-decoration: none;
   font-weight: 600;
   padding: 0.75rem 1.5rem;
   border: 2px solid var(--color-text);
-  border-radius: 0; /* UPDATED: Sharp corners */
+  border-radius: 0;
   transition: all 0.3s ease;
 }
-
 .contact-link.email-btn {
   background-color: var(--color-text);
   border-color: var(--color-text);
   color: var(--color-background);
 }
-
 .contact-link:hover {
-  /* UPDATED: Inverted hover effect */
   background-color: var(--color-text);
   color: var(--color-background);
 }
-
 .contact-link.email-btn:hover {
   background-color: transparent;
   color: var(--color-text);
