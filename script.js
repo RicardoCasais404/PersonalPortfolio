@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
     opacity: 0,
     stagger: 0.1,
     ease: "none",
-    // UPDATED: Added a duration to make the hero fade out more slowly and consistently.
     duration: 2,
   });
 
@@ -41,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   animatedSections.forEach((section) => {
     const contentElements = section.querySelectorAll(
-      ".section-title, p, .about-socials, .accordion, .skill-marquee, .contact-links"
+      ".section-title, p, .about-socials, .accordion, .skill-list-container, .contact-links"
     );
 
     const tl = gsap.timeline({
@@ -62,7 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
         opacity: 1,
         stagger: 0.1,
         ease: "none",
-        // UPDATED: Significantly increased duration for a very slow, gradual fade-in.
         duration: 4,
       }
     )
@@ -74,15 +72,51 @@ document.addEventListener("DOMContentLoaded", () => {
           opacity: 0,
           stagger: 0.1,
           ease: "none",
-          // UPDATED: Significantly increased duration for a very slow, gradual fade-out.
           duration: 4,
         },
-        // The delay between fade-in completion and fade-out start.
         ">+1"
       );
   });
 
-  // --- ACCORDION LOGIC (Unchanged) ---
+  // --- INTERACTIVE SKILL LIST ---
+  const skillList = document.querySelector(".skill-list-container");
+
+  if (skillList) {
+    const skillItems = document.querySelectorAll(".skill-list-item");
+
+    const handleMouseMove = (e) => {
+      skillItems.forEach((item) => {
+        const rect = item.getBoundingClientRect();
+        const isInside =
+          e.clientX >= rect.left &&
+          e.clientX <= rect.right &&
+          e.clientY >= rect.top &&
+          e.clientY <= rect.bottom;
+
+        if (isInside) {
+          item.style.opacity = "1";
+          item.style.transform = "scale(1.1)";
+        } else {
+          item.style.opacity = "0.3";
+          item.style.transform = "scale(1)";
+        }
+      });
+    };
+
+    const handleMouseLeave = () => {
+      skillItems.forEach((item) => {
+        item.style.opacity = "1";
+        item.style.transform = "scale(1)";
+      });
+    };
+
+    skillList.addEventListener("mousemove", handleMouseMove);
+    skillList.addEventListener("mouseleave", handleMouseLeave);
+
+    handleMouseLeave();
+  }
+
+  // --- ACCORDION LOGIC ---
   const accordionItems = document.querySelectorAll(".accordion-item");
 
   accordionItems.forEach((item) => {

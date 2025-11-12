@@ -1,5 +1,5 @@
 /* ==========================================================================
-    Design System & Global Styles
+   Design System & Global Styles
    ========================================================================== */
 :root {
   /* Colors */
@@ -27,15 +27,15 @@ body {
 }
 
 /* ==========================================================================
-    Navbar & General Typography
+   Navbar & General Typography
    ========================================================================== */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 2rem 5%; /* UPDATED: Increased vertical padding */
-  background-color: hsl(0, 0%, 85%); /* UPDATED: Made the background opaque */
+  padding: 2rem 5%;
+  background-color: hsl(0, 0%, 85%);
   backdrop-filter: blur(10px);
   z-index: 100;
 }
@@ -141,7 +141,7 @@ p {
 }
 
 /* ==========================================================================
-    About Section
+   About Section
    ========================================================================== */
 .about .content-container {
   display: flex;
@@ -189,7 +189,7 @@ p {
 }
 
 /* ==========================================================================
-    Work Experience Section (Accordion)
+   Work Experience Section (Accordion)
    ========================================================================== */
 .work-experience-title {
   text-align: center;
@@ -257,50 +257,40 @@ p {
 }
 
 /* ==========================================================================
-    Skills Section (Marquee)
+   Skills Section (Interactive Skill List)
    ========================================================================== */
-@keyframes scrollMarquee {
-  from {
-    transform: translateX(0%);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
 .skills .section-title {
   text-align: center;
   width: 100%;
+  margin-bottom: 4rem;
 }
-.skill-marquee {
-  width: 100%;
-  overflow: hidden;
-  margin-top: 4rem;
-}
-.skill-list {
+
+.skill-list-container {
   display: flex;
-  width: fit-content;
-  animation: scrollMarquee 20s linear infinite;
-}
-.skill-tag {
-  text-transform: uppercase;
-  font-size: clamp(2rem, 6vw, 4rem);
-  font-weight: 700;
-  white-space: nowrap;
-}
-.skill-separator {
-  font-size: clamp(1.5rem, 4vw, 3rem);
-  font-weight: 300;
-  margin: 0 2rem;
-  display: flex;
+  justify-content: center;
   align-items: center;
+  flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+  gap: 1rem 3rem; /* Vertical and horizontal gap */
+  width: 100%;
+  padding: 2rem 0;
+}
+
+.skill-list-item {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  cursor: default;
+  /* The transition is the heart of the elegant effect */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  will-change: opacity, transform; /* Performance optimization */
 }
 
 /* ==========================================================================
-    Contact Section
+   Contact Section
    ========================================================================== */
 .contact .content-container {
   text-align: left;
-} /* UPDATED */
+}
 .contact-links {
   margin-top: 2rem;
   display: flex;
@@ -344,7 +334,7 @@ p {
 }
 
 /* ==========================================================================
-    Footer
+   Footer
    ========================================================================== */
 .site-footer {
   width: 100%;
