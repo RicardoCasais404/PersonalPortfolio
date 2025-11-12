@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Design System & Global Styles
+    Design System & Global Styles
    ========================================================================== */
 :root {
   /* Colors */
@@ -27,15 +27,15 @@ body {
 }
 
 /* ==========================================================================
-   Navbar & General Typography
+    Navbar & General Typography
    ========================================================================== */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1.5rem 5%;
-  background-color: hsla(0, 0%, 85%, 0.7);
+  padding: 2rem 5%; /* UPDATED: Increased vertical padding */
+  background-color: hsl(0, 0%, 85%); /* UPDATED: Made the background opaque */
   backdrop-filter: blur(10px);
   z-index: 100;
 }
@@ -141,7 +141,7 @@ p {
 }
 
 /* ==========================================================================
-   About Section
+    About Section
    ========================================================================== */
 .about .content-container {
   display: flex;
@@ -189,7 +189,7 @@ p {
 }
 
 /* ==========================================================================
-   Work Experience Section (Accordion)
+    Work Experience Section (Accordion)
    ========================================================================== */
 .work-experience-title {
   text-align: center;
@@ -257,7 +257,7 @@ p {
 }
 
 /* ==========================================================================
-   Skills Section (Marquee)
+    Skills Section (Marquee)
    ========================================================================== */
 @keyframes scrollMarquee {
   from {
@@ -296,7 +296,7 @@ p {
 }
 
 /* ==========================================================================
-   Contact Section
+    Contact Section
    ========================================================================== */
 .contact .content-container {
   text-align: left;
@@ -344,7 +344,7 @@ p {
 }
 
 /* ==========================================================================
-   Footer
+    Footer
    ========================================================================== */
 .site-footer {
   width: 100%;
