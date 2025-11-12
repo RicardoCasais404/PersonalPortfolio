@@ -1,0 +1,31 @@
+/* -------------------- */
+/* -- Design System --- */
+/* -------------------- */
+:root {
+  /* Colors */
+  --color-text: #26150f;
+  --color-background: #d9d9d9;
+  --color-primary: #593a28;
+  --color-secondary: #a67a60;
+
+  /* Fonts */
+  --font-main: "Inter", sans-serif;
+}
+
+/* -------------------- */
+/* --- Global Reset --- */
+/* -------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* -------------------- */
+/* --- Base Styles ---- */
+/* -------------------- */
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
