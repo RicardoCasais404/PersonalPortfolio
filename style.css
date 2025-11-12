@@ -26,6 +26,14 @@ body {
   overflow-x: hidden;
 }
 
+/* === MODIFICATION START === */
+/* Set a default cursor for all links and buttons */
+a,
+button {
+  cursor: default;
+}
+/* === MODIFICATION END === */
+
 /* ==========================================================================
    Navbar & General Typography
    ========================================================================== */
@@ -43,9 +51,25 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
+
+.navbar-logo {
+  text-decoration: none;
+  color: var(--color-text);
+  /* === MODIFICATION START === */
+  font-size: 3.5rem; /* Increased from 3rem */
+  /* === MODIFICATION END === */
+  font-weight: 300;
+  line-height: 1;
+  transition: transform 0.5s ease-in-out;
+}
+
+.navbar-logo:hover {
+  animation: pulsate 1.5s infinite ease-in-out;
+}
+
 .nav-links a {
   position: relative;
   text-transform: uppercase;
@@ -218,7 +242,7 @@ p {
   text-align: left;
   background-color: transparent;
   border: none;
-  cursor: pointer;
+  /* The cursor is now inherited from the global button style */
   font-family: var(--font-main);
   font-size: 1.1rem;
   font-weight: 500;
@@ -367,4 +391,21 @@ p {
 
 .footer-socials a:hover {
   opacity: 0.7;
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+
+/* Keyframe animation for the logo's pulsating effect */
+@keyframes pulsate {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
