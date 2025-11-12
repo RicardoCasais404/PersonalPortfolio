@@ -5,8 +5,6 @@
   /* Colors */
   --color-text: #26150f;
   --color-background: #d9d9d9;
-  --color-primary: #593a28;
-  --color-secondary: #a67a60;
   /* Fonts */
   --font-main: "Inter", sans-serif;
 }
@@ -41,7 +39,6 @@ body {
   backdrop-filter: blur(10px);
   z-index: 100;
 }
-
 .navbar-content {
   max-width: 1200px;
   margin: 0 auto;
@@ -49,22 +46,31 @@ body {
   justify-content: center;
   align-items: center;
 }
-
 .nav-links a {
+  position: relative;
   text-transform: uppercase;
   text-decoration: none;
   margin: 0 1.5rem;
   font-weight: 500;
-  transition: color 0.3s;
   color: var(--color-text);
+  padding-bottom: 8px;
 }
-
-.nav-links a:hover {
-  color: var(--color-primary);
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-text);
+  transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.nav-links a:hover::after {
+  width: 100%;
 }
 
 /* ==========================================================================
-   Section Layout
+   Section Layout & Typography
    ========================================================================== */
 .section {
   width: 100%;
@@ -74,33 +80,25 @@ body {
   padding: 20vh 5%;
   position: relative;
 }
-
 .header-hero {
   min-height: 100vh;
   padding-top: 100px;
   text-align: left;
 }
-
-/* ==========================================================================
-   Content & Typography
-   ========================================================================== */
 .content-container {
   max-width: 1100px;
   width: 100%;
   margin: 0 auto;
 }
-
 .section:not(.header-hero) .content-container {
   text-align: left;
 }
-
 .main-title,
 .section-title,
 .project-title,
 .skill-tag {
   text-transform: uppercase;
 }
-
 .main-title {
   font-size: clamp(3rem, 10vw, 8rem);
   font-weight: 800;
@@ -110,16 +108,13 @@ body {
   flex-direction: column;
   align-items: flex-start;
 }
-
 .title-line {
   display: flex;
   align-items: center;
 }
-
 .title-line-indented {
   margin-left: 10%;
 }
-
 .tagline {
   text-transform: uppercase;
   font-size: clamp(1.2rem, 3vw, 1.5rem);
@@ -127,74 +122,21 @@ body {
   letter-spacing: -0.08em;
   margin-top: 1.5rem;
 }
-
 .tagline .tagline-light {
   font-weight: 300;
 }
-
 .section-title {
   font-size: clamp(2.5rem, 8vw, 5rem);
   font-weight: 800;
   margin-bottom: 2rem;
   color: var(--color-text);
 }
-
 p {
   font-size: 1.2rem;
   line-height: 1.7;
   max-width: 65ch;
   margin: 0;
 }
-
-/* ==========================================================================
-   About Section
-   ========================================================================== */
-.about .content-container {
-  display: flex;
-  align-items: flex-start;
-  text-align: left;
-  gap: 4rem;
-}
-
-.about-left {
-  flex: 1;
-}
-
-.about-right {
-  flex: 2;
-}
-
-.about .section-title {
-  margin-bottom: 0;
-  line-height: 1.1;
-}
-
-.about-right p {
-  margin: 0;
-  max-width: none;
-}
-
-.about-socials {
-  margin-top: 2rem;
-  display: flex;
-  gap: 1.5rem;
-}
-
-.about-socials a {
-  color: var(--color-text);
-  text-decoration: none;
-  font-size: 1rem;
-  font-weight: 600;
-  transition: color 0.3s ease;
-}
-
-.about-socials a:hover {
-  color: var(--color-primary);
-}
-
-/* ==========================================================================
-   Decorative Elements
-   ========================================================================== */
 .title-deco {
   font-size: 0.8em;
   line-height: 1;
@@ -206,70 +148,136 @@ p {
 }
 
 /* ==========================================================================
-   Component Styling
+   About Section
    ========================================================================== */
-.project-list {
-  margin-top: 3rem;
+.about .content-container {
   display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  width: 100%;
-}
-
-.project-item {
-  background-color: transparent;
-  border: 2px solid var(--color-secondary);
-  padding: 1.5rem;
-  border-radius: 8px;
+  align-items: flex-start;
   text-align: left;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  gap: 4rem;
 }
-
-.project-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+.about-left {
+  flex: 1;
 }
-
-.project-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--color-primary);
-  margin-bottom: 0.5rem;
+.about-right {
+  flex: 2;
 }
-
-.project-description {
-  font-size: 1rem;
-  line-height: 1.6;
-  max-width: none;
+.about .section-title {
+  margin-bottom: 0;
+  line-height: 1.1;
+}
+.about-right p {
   margin: 0;
+  max-width: none;
 }
-
-.project-link {
-  font-weight: 600;
-  color: var(--color-primary);
+.about-socials {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1.5rem;
+}
+.about-socials a {
+  color: var(--color-text);
   text-decoration: none;
-  transition: color 0.3s ease;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: opacity 0.3s ease;
+}
+.about-socials a:hover {
+  opacity: 0.7;
 }
 
-.project-link:hover {
+/* ==========================================================================
+   Work Experience Section (Accordion)
+   ========================================================================== */
+.work-experience-title {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.work-experience-title .title-line {
+  justify-content: center;
+}
+.title-deco-diamond {
+  font-size: 0.8em;
+  margin-right: 0.25em;
   color: var(--color-text);
 }
+.accordion {
+  width: 100%;
+  border-bottom: 1px solid var(--color-text);
+}
+.accordion-item {
+  border-top: 1px solid var(--color-text);
+}
+.accordion-header {
+  display: grid;
+  grid-template-columns: 0.5fr 1.5fr 1fr 2fr 0.5fr;
+  gap: 1rem;
+  width: 100%;
+  padding: 2rem 1rem;
+  text-align: left;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-main);
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.accordion-header:hover {
+  transform: translateX(10px);
+}
+.accordion-col {
+  display: flex;
+  align-items: center;
+}
+.accordion-plus {
+  justify-self: end;
+  font-size: 1.5rem;
+  font-weight: 400;
+  transition: transform 0.3s ease;
+}
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+}
+.accordion-content-inner {
+  padding: 0 1rem 2rem 1rem;
+  display: grid;
+  grid-template-columns: 0.5fr 1.5fr 3fr;
+  gap: 1rem;
+}
+.accordion-content-inner p {
+  grid-column: 2 / -1;
+  max-width: 60ch;
+}
+.accordion-item.active .accordion-plus {
+  transform: rotate(45deg);
+}
 
+/* ==========================================================================
+   Skills & Contact Section
+   ========================================================================== */
 .skill-grid {
   margin-top: 3rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  gap: 1rem;
+  gap: 1.5rem; /* Increased gap for cleaner look */
 }
 
 .skill-tag {
+  /* UPDATED: Cleaner, text-based style */
   background-color: transparent;
-  border: 2px solid var(--color-secondary);
-  color: var(--color-primary);
-  font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  border-radius: 2rem;
+  border: none; /* Removed border */
+  color: var(--color-text);
+  font-weight: 500; /* Adjusted weight */
+  padding: 0; /* Removed padding */
+  transition: opacity 0.3s ease;
+}
+
+.skill-tag:hover {
+  opacity: 0.7; /* Simple fade for hover */
 }
 
 .contact-links {
@@ -280,23 +288,28 @@ p {
 }
 
 .contact-link {
-  color: var(--color-primary);
+  color: var(--color-text);
   text-decoration: none;
   font-weight: 600;
   padding: 0.75rem 1.5rem;
-  border: 2px solid var(--color-secondary);
-  border-radius: 4px;
+  border: 2px solid var(--color-text);
+  border-radius: 0; /* UPDATED: Sharp corners */
   transition: all 0.3s ease;
 }
 
 .contact-link.email-btn {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
+  background-color: var(--color-text);
+  border-color: var(--color-text);
   color: var(--color-background);
 }
 
 .contact-link:hover {
-  background-color: var(--color-secondary);
-  border-color: var(--color-secondary);
+  /* UPDATED: Inverted hover effect */
+  background-color: var(--color-text);
+  color: var(--color-background);
+}
+
+.contact-link.email-btn:hover {
+  background-color: transparent;
   color: var(--color-text);
 }
