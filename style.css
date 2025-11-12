@@ -27,7 +27,7 @@ body {
 }
 
 /* ==========================================================================
-   Navbar
+   Navbar & General Typography
    ========================================================================== */
 .navbar {
   position: fixed;
@@ -68,10 +68,6 @@ body {
 .nav-links a:hover::after {
   width: 100%;
 }
-
-/* ==========================================================================
-   Section Layout & Typography
-   ========================================================================== */
 .section {
   width: 100%;
   display: flex;
@@ -102,7 +98,6 @@ body {
 .main-title {
   font-size: clamp(3rem, 10vw, 8rem);
   font-weight: 800;
-  color: var(--color-text);
   line-height: 1.1;
   display: flex;
   flex-direction: column;
@@ -129,7 +124,6 @@ body {
   font-size: clamp(2.5rem, 8vw, 5rem);
   font-weight: 800;
   margin-bottom: 2rem;
-  color: var(--color-text);
 }
 p {
   font-size: 1.2rem;
@@ -144,7 +138,6 @@ p {
   display: inline-block;
   vertical-align: middle;
   font-weight: 300;
-  color: var(--color-text);
 }
 
 /* ==========================================================================
@@ -153,7 +146,6 @@ p {
 .about .content-container {
   display: flex;
   align-items: flex-start;
-  text-align: left;
   gap: 4rem;
 }
 .about-left {
@@ -167,7 +159,6 @@ p {
   line-height: 1.1;
 }
 .about-right p {
-  margin: 0;
   max-width: none;
 }
 .about-socials {
@@ -175,34 +166,30 @@ p {
   display: flex;
   gap: 1.5rem;
 }
-
 .about-socials a {
-  position: relative; /* Required for the pseudo-element */
-  color: var(--color-text);
+  position: relative;
   text-decoration: none;
   font-size: 1rem;
   font-weight: 600;
-  padding-bottom: 5px; /* Add space for the underline */
+  padding-bottom: 5px;
+  color: var(--color-text);
 }
-
-/* NEW: Underline for the social links */
 .about-socials a::after {
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   width: 0;
-  height: 1px; /* A thinner line for a more subtle effect */
+  height: 1px;
   background-color: var(--color-text);
   transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
-
 .about-socials a:hover::after {
   width: 100%;
 }
 
 /* ==========================================================================
-   Work Experience Section (Accordion) & Skills Marquee
+   Work Experience Section (Accordion)
    ========================================================================== */
 .work-experience-title {
   text-align: center;
@@ -214,7 +201,6 @@ p {
 .title-deco-diamond {
   font-size: 0.8em;
   margin-right: 0.25em;
-  color: var(--color-text);
 }
 .accordion {
   width: 100%;
@@ -270,6 +256,9 @@ p {
   transform: rotate(45deg);
 }
 
+/* ==========================================================================
+   Skills Section (Marquee)
+   ========================================================================== */
 @keyframes scrollMarquee {
   from {
     transform: translateX(0%);
@@ -309,31 +298,83 @@ p {
 /* ==========================================================================
    Contact Section
    ========================================================================== */
+.contact .content-container {
+  text-align: left;
+} /* UPDATED */
 .contact-links {
   margin-top: 2rem;
   display: flex;
+  align-items: center;
   justify-content: flex-start;
-  gap: 1rem;
+  gap: 2rem;
 }
 .contact-link {
+  position: relative;
   color: var(--color-text);
   text-decoration: none;
   font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  border: 2px solid var(--color-text);
-  border-radius: 0;
+  padding-bottom: 5px;
+  background-color: transparent;
+  border: none;
   transition: all 0.3s ease;
 }
-.contact-link.email-btn {
+.contact-link:not(.email-btn)::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
   background-color: var(--color-text);
-  border-color: var(--color-text);
-  color: var(--color-background);
+  transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
-.contact-link:hover {
+.contact-link:not(.email-btn):hover::after {
+  width: 100%;
+}
+.contact-link.email-btn {
+  padding: 0.75rem 1.5rem;
   background-color: var(--color-text);
   color: var(--color-background);
+  border: 2px solid var(--color-text);
+  border-radius: 0;
 }
 .contact-link.email-btn:hover {
   background-color: transparent;
   color: var(--color-text);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+  width: 100%;
+  padding: 3rem 5%;
+  min-height: auto;
+}
+
+.footer-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.footer-content strong {
+  font-weight: 800; /* Bolder weight for your name */
+}
+
+.footer-socials a {
+  text-decoration: none;
+  color: var(--color-text);
+  margin: 0 1rem;
+  transition: opacity 0.3s ease;
+}
+
+.footer-socials a:hover {
+  opacity: 0.7;
 }
