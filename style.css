@@ -7,7 +7,6 @@
   --color-background: #d9d9d9;
   --color-primary: #593a28;
   --color-secondary: #a67a60;
-
   /* Fonts */
   --font-main: "Inter", sans-serif;
 }
@@ -18,107 +17,157 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-main);
   background-color: var(--color-background);
   color: var(--color-text);
+  overflow-x: hidden;
 }
 
 /* ==========================================================================
-   NEW 3D Scene & Scroll Setup
+   Navbar
    ========================================================================== */
-
-/*
-  The viewport is the fixed "camera" that establishes the 3D scene.
-  It does not scroll with the page.
-*/
-.viewport {
+.navbar {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  perspective: 800px;
-}
-
-/*
-  The scroll-track is an empty element that creates the page's scrollbar.
-  Its height defines the total length of the scroll journey.
-*/
-.scroll-track {
-  height: 500vh; /* 5 sections = 500% of viewport height */
-}
-
-/*
-  The corridor wrapper contains all sections and will be transformed in 3D.
-*/
-.corridor-wrapper {
-  height: 100vh;
   width: 100%;
-  transform-style: preserve-3d;
+  padding: 1.5rem 5%;
+  background-color: hsla(0, 0%, 85%, 0.7);
+  backdrop-filter: blur(10px);
+  z-index: 100;
 }
 
-/*
-  Each section is a fixed "slide" stacked in the center of the viewport.
-  GSAP will control their visibility and z-position.
-*/
+.navbar-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-links a {
+  text-transform: uppercase;
+  text-decoration: none;
+  margin: 0 1.5rem;
+  font-weight: 500;
+  transition: color 0.3s;
+  color: var(--color-text);
+}
+
+.nav-links a:hover {
+  color: var(--color-primary);
+}
+
+/* ==========================================================================
+   Section Layout
+   ========================================================================== */
 .section {
-  position: fixed;
-  top: 0;
   width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0; /* Hidden by default */
-  pointer-events: none; /* Not interactive by default */
+  padding: 20vh 5%;
+  position: relative;
+}
+
+.header-hero {
+  min-height: 100vh;
+  padding-top: 100px;
+  text-align: left;
 }
 
 /* ==========================================================================
    Content & Typography
    ========================================================================== */
-
 .content-container {
-  max-width: 1000px;
-  width: 90%;
+  max-width: 1100px;
+  width: 100%;
   margin: 0 auto;
-  padding: 2.5rem;
+}
+
+.section:not(.header-hero) .content-container {
   text-align: center;
-  background-color: hsla(0, 0%, 85%, 0.85);
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
+}
+
+.main-title,
+.section-title,
+.project-title,
+.skill-tag {
+  text-transform: uppercase;
 }
 
 .main-title {
-  font-size: clamp(2.5rem, 8vw, 5rem);
-  font-weight: 900;
-  color: var(--color-primary);
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-weight: 800;
+  color: var(--color-text);
+  line-height: 1.1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.tagline {
-  font-size: clamp(1rem, 4vw, 1.5rem);
-  font-weight: 400;
-  margin-top: 0.5rem;
+.title-line {
+  display: flex;
+  align-items: center;
 }
+
+.title-line-indented {
+  margin-left: 10%;
+}
+
+/* --- UPDATED TAGLINE STYLES --- */
+.tagline {
+  text-transform: uppercase;
+  font-size: clamp(
+    1.2rem,
+    3vw,
+    1.5rem
+  ); /* UPDATED: Slightly larger font size */
+  font-weight: 800; /* UPDATED: Bold base weight for "CASAIS" */
+  letter-spacing: -0.08em; /* UPDATED: Much tighter letter spacing */
+  margin-top: 1.5rem;
+}
+
+.tagline .tagline-light {
+  font-weight: 300; /* NEW: Lighter weight for "RICARDO" and "404" */
+}
+/* --- END OF UPDATED STYLES --- */
 
 .section-title {
-  font-size: clamp(2rem, 6vw, 3rem);
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  color: var(--color-primary);
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 800;
+  margin-bottom: 2rem;
+  color: var(--color-text);
 }
 
 p {
-  font-size: 1.1rem;
-  line-height: 1.6;
+  font-size: 1.2rem;
+  line-height: 1.7;
+  max-width: 65ch;
+  margin: 0 auto;
 }
 
 /* ==========================================================================
-   Component Styling (Projects, Skills, Contact)
+   Decorative Elements
    ========================================================================== */
+.title-deco {
+  width: 0.8em;
+  height: 0.8em;
+  margin-left: 0.25em;
+  display: inline-block;
+  vertical-align: middle;
+}
 
+/* ==========================================================================
+   Component Styling
+   ========================================================================== */
 .project-list {
+  margin-top: 3rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -126,29 +175,31 @@ p {
 }
 
 .project-item {
-  background-color: var(--color-background);
+  background-color: transparent;
+  border: 2px solid var(--color-secondary);
   padding: 1.5rem;
   border-radius: 8px;
-  border: 1px solid var(--color-secondary);
   text-align: left;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
 .project-title {
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-primary);
   margin-bottom: 0.5rem;
 }
 
 .project-description {
   font-size: 1rem;
-  margin-bottom: 1rem;
+  line-height: 1.6;
+  max-width: none;
+  margin: 0;
 }
 
 .project-link {
@@ -163,6 +214,7 @@ p {
 }
 
 .skill-grid {
+  margin-top: 3rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -170,11 +222,11 @@ p {
 }
 
 .skill-tag {
-  background-color: var(--color-background);
+  background-color: transparent;
+  border: 2px solid var(--color-secondary);
   color: var(--color-primary);
-  font-weight: 500;
+  font-weight: 600;
   padding: 0.75rem 1.5rem;
-  border: 1px solid var(--color-secondary);
   border-radius: 2rem;
 }
 
@@ -190,9 +242,9 @@ p {
   text-decoration: none;
   font-weight: 600;
   padding: 0.75rem 1.5rem;
-  border: 1px solid var(--color-secondary);
+  border: 2px solid var(--color-secondary);
   border-radius: 4px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .contact-link.email-btn {

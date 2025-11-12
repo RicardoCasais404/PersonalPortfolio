@@ -1,158 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Meta Information -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ricardo Casais - Full Stack Developer</title>
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
       rel="stylesheet"
     />
-
-    <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!--
-      The viewport is the fixed "camera" that creates the 3D space.
-      It does not scroll with the page.
-    -->
-    <div class="viewport">
-      <!--
-          The corridor wrapper contains all sections and will be moved in 3D
-          space by GSAP, based on the scroll position of the .scroll-track.
-        -->
-      <div class="corridor-wrapper">
-        <!-- ======================= -->
-        <!--      HERO SECTION       -->
-        <!-- ======================= -->
-        <header class="section header-hero">
-          <div class="content-container">
-            <h1 class="main-title">RICARDO CASAIS 404</h1>
-            <p class="tagline">Full-Stack Engineering & Creative Solutions.</p>
-          </div>
-        </header>
-
-        <!-- ======================= -->
-        <!--      ABOUT SECTION      -->
-        <!-- ======================= -->
-        <section id="about" class="section about">
-          <div class="content-container">
-            <h2 class="section-title">01. About Me</h2>
-            <p>
-              Hello! I am a passionate Full-Stack Engineer-in-training with a
-              focus on creating engaging, performant, and accessible web
-              applications. Currently focused on mastering modern JavaScript
-              frameworks and robust backend architecture.
-            </p>
-          </div>
-        </section>
-
-        <!-- ======================= -->
-        <!--    PROJECTS SECTION     -->
-        <!-- ======================= -->
-        <section id="projects" class="section projects">
-          <div class="content-container">
-            <h2 class="section-title">02. Selected Projects</h2>
-
-            <!-- Project 1 -->
-            <article class="project-item">
-              <h3 class="project-title">Project Title One</h3>
-              <p class="project-description">
-                A brief description of the project and its key technologies
-                (e.g., MERN Stack, Next.js, Django).
-              </p>
-              <a href="#" class="project-link">View Project →</a>
-            </article>
-
-            <!-- Project 2 -->
-            <article class="project-item">
-              <h3 class="project-title">Project Title Two</h3>
-              <p class="project-description">
-                A challenging application that demonstrates advanced backend
-                logic and data management.
-              </p>
-              <a href="#" class="project-link">View Project →</a>
-            </article>
-          </div>
-        </section>
-
-        <!-- ======================= -->
-        <!--   TECH STACK SECTION    -->
-        <!-- ======================= -->
-        <section id="skills" class="section skills">
-          <div class="content-container">
-            <h2 class="section-title">03. Tech Stack</h2>
-            <div class="skill-grid">
-              <span class="skill-tag">JavaScript</span>
-              <span class="skill-tag">React</span>
-              <span class="skill-tag">Node.js</span>
-              <span class="skill-tag">Python</span>
-              <span class="skill-tag">SQL/NoSQL</span>
-              <span class="skill-tag">AWS/Azure</span>
-              <span class="skill-tag">HTML5</span>
-              <span class="skill-tag">CSS3</span>
-            </div>
-          </div>
-        </section>
-
-        <!-- ======================= -->
-        <!--     CONTACT SECTION     -->
-        <!-- ======================= -->
-        <footer id="contact" class="section contact">
-          <div class="content-container">
-            <h2 class="section-title">Ready to Connect?</h2>
-            <p>
-              I'm always open to discussing new opportunities. Let's build
-              something great.
-            </p>
-            <div class="contact-links">
-              <a
-                href="mailto:ricardo.casais.404@example.com"
-                class="contact-link email-btn"
-                >Email Me</a
-              >
-              <a
-                href="https://github.com/RicardoCasais404"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="contact-link"
-                >GitHub</a
-              >
-              <a
-                href="https://www.linkedin.com/in/ricardocasais404/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="contact-link"
-                >LinkedIn</a
-              >
-            </div>
-          </div>
-        </footer>
+    <nav class="navbar">
+      <div class="navbar-content">
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
       </div>
-      <!-- End .corridor-wrapper -->
-    </div>
-    <!-- End .viewport -->
+    </nav>
 
-    <!--
-      The scroll-track is a simple, empty div that creates the scrollbar.
-      Its height determines the total scroll distance for GSAP to track.
-    -->
-    <div class="scroll-track"></div>
+    <header id="hero" class="section header-hero">
+      <div class="content-container">
+        <h1 class="main-title">
+          <div class="title-line">
+            <span>FULL-STACK</span>
+          </div>
+          <div class="title-line title-line-indented">
+            <span>ENGINEERING</span>
+            <img
+              src="placeholder-star.svg"
+              class="title-deco"
+              aria-hidden="true"
+              alt=""
+            />
+          </div>
+          <div class="title-line">
+            <span>& CREATIVE SOLUTIONS.</span>
+          </div>
+        </h1>
+        <!-- The tagline is now structured for individual word styling -->
+        <p class="tagline">
+          <span class="tagline-light">RICARDO</span>CASAIS<span
+            class="tagline-light"
+            >404</span
+          >
+        </p>
+      </div>
+    </header>
 
-    <!--
-      GSAP & ScrollTrigger libraries. These must be included
-      BEFORE your own script.js file.
-    -->
+    <section id="about" class="section about">
+      <div class="content-container">
+        <h2 class="section-title">01. About Me</h2>
+        <p>Hello! I am a passionate Full-Stack Engineer-in-training...</p>
+      </div>
+    </section>
+
+    <section id="projects" class="section projects">
+      <div class="content-container">
+        <h2 class="section-title">02. Selected Projects</h2>
+        <div class="project-list">
+          <article class="project-item">
+            <h3 class="project-title">Project Title One</h3>
+            <p class="project-description">A brief description...</p>
+            <a href="#" class="project-link">View Project →</a>
+          </article>
+          <article class="project-item">
+            <h3 class="project-title">Project Title Two</h3>
+            <p class="project-description">A challenging application...</p>
+            <a href="#" class="project-link">View Project →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section skills">
+      <div class="content-container">
+        <h2 class="section-title">03. Tech Stack</h2>
+        <div class="skill-grid">
+          <span class="skill-tag">JavaScript</span
+          ><span class="skill-tag">React</span
+          ><span class="skill-tag">Node.js</span
+          ><span class="skill-tag">Python</span
+          ><span class="skill-tag">SQL/NoSQL</span
+          ><span class="skill-tag">AWS/Azure</span
+          ><span class="skill-tag">HTML5</span
+          ><span class="skill-tag">CSS3</span>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact" class="section contact">
+      <div class="content-container">
+        <h2 class="section-title">Ready to Connect?</h2>
+        <p>I'm always open to discussing new opportunities...</p>
+        <div class="contact-links">
+          <a
+            href="mailto:ricardo.casais.404@example.com"
+            class="contact-link email-btn"
+            >Email Me</a
+          >
+          <a
+            href="https://github.com/RicardoCasais404"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-link"
+            >GitHub</a
+          >
+          <a
+            href="https://www.linkedin.com/in/ricardocasais404/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-link"
+            >LinkedIn</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-
-    <!-- Your main application script -->
     <script src="script.js"></script>
   </body>
 </html>
