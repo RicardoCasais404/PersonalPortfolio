@@ -1,6 +1,6 @@
-/* -------------------- */
-/* -- Design System --- */
-/* -------------------- */
+/* ==========================================================================
+   Design System & Global Styles
+   ========================================================================== */
 :root {
   /* Colors */
   --color-text: #26150f;
@@ -12,103 +12,86 @@
   --font-main: "Inter", sans-serif;
 }
 
-/* -------------------- */
-/* --- Global Reset --- */
-/* -------------------- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* -------------------- */
-/* --- Base Styles ---- */
-/* -------------------- */
 body {
   font-family: var(--font-main);
   background-color: var(--color-background);
   color: var(--color-text);
 }
 
-/* -------------------- */
-/* --- Layout Setup --- */
-/* -------------------- */
-body {
-  /* Define a scrollable height much larger than the viewport. */
-  height: 500vh;
-  overflow-x: hidden;
+/* ==========================================================================
+   NEW 3D Scene & Scroll Setup
+   ========================================================================== */
 
-  /* Set up the 3D perspective for the entire scene. */
-  perspective: 1px;
-}
-
-.corridor-wrapper {
-  /* Lock the wrapper to the viewport. */
+/*
+  The viewport is the fixed "camera" that establishes the 3D scene.
+  It does not scroll with the page.
+*/
+.viewport {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  bottom: 0;
+  perspective: 800px;
+}
 
-  /* Enable 3D positioning for child elements. */
+/*
+  The scroll-track is an empty element that creates the page's scrollbar.
+  Its height defines the total length of the scroll journey.
+*/
+.scroll-track {
+  height: 500vh; /* 5 sections = 500% of viewport height */
+}
+
+/*
+  The corridor wrapper contains all sections and will be transformed in 3D.
+*/
+.corridor-wrapper {
+  height: 100vh;
+  width: 100%;
   transform-style: preserve-3d;
 }
 
+/*
+  Each section is a fixed "slide" stacked in the center of the viewport.
+  GSAP will control their visibility and z-position.
+*/
 .section {
-  /* Stack all sections in the same space. */
-  position: absolute;
+  position: fixed;
   top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-
-  /* Center content within each section. */
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0; /* Hidden by default */
+  pointer-events: none; /* Not interactive by default */
 }
 
-/* -------------------- */
-/* -- Corridor Effect -- */
-/* -------------------- */
+/* ==========================================================================
+   Content & Typography
+   ========================================================================== */
 
-/*
-  Position each section at a different depth (Z-axis) and scale it up.
-  The further back a section is (larger negative translateZ), the larger
-  we must scale it so it appears normal-sized when it reaches the front.
-*/
-.header-hero {
-  transform: translateZ(0px) scale(1);
-}
-.about {
-  transform: translateZ(-1px) scale(2);
-}
-.projects {
-  transform: translateZ(-2px) scale(3);
-}
-.skills {
-  transform: translateZ(-3px) scale(4);
-}
-.contact {
-  transform: translateZ(-4px) scale(5);
-}
-
-/* -------------------- */
-/* -- Content Styling -- */
-/* -------------------- */
 .content-container {
   max-width: 1000px;
   width: 90%;
   margin: 0 auto;
   padding: 2.5rem;
   text-align: center;
-  background-color: hsla(0, 0%, 85%, 0.85); /* Light gray with transparency */
+  background-color: hsla(0, 0%, 85%, 0.85);
   border-radius: 8px;
-  backdrop-filter: blur(5px); /* Adds a frosted glass effect */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
 }
 
 .main-title {
-  font-size: clamp(2.5rem, 8vw, 5rem); /* Responsive font size */
+  font-size: clamp(2.5rem, 8vw, 5rem);
   font-weight: 900;
   color: var(--color-primary);
 }
@@ -129,4 +112,97 @@ body {
 p {
   font-size: 1.1rem;
   line-height: 1.6;
+}
+
+/* ==========================================================================
+   Component Styling (Projects, Skills, Contact)
+   ========================================================================== */
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.project-item {
+  background-color: var(--color-background);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-secondary);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.project-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.project-description {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.project-link {
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.project-link:hover {
+  color: var(--color-text);
+}
+
+.skill-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.skill-tag {
+  background-color: var(--color-background);
+  color: var(--color-primary);
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--color-secondary);
+  border-radius: 2rem;
+}
+
+.contact-links {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.contact-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--color-secondary);
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.contact-link.email-btn {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-background);
+}
+
+.contact-link:hover {
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
+  color: var(--color-text);
 }
