@@ -120,23 +120,17 @@ body {
   margin-left: 10%;
 }
 
-/* --- UPDATED TAGLINE STYLES --- */
 .tagline {
   text-transform: uppercase;
-  font-size: clamp(
-    1.2rem,
-    3vw,
-    1.5rem
-  ); /* UPDATED: Slightly larger font size */
-  font-weight: 800; /* UPDATED: Bold base weight for "CASAIS" */
-  letter-spacing: -0.08em; /* UPDATED: Much tighter letter spacing */
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  font-weight: 800;
+  letter-spacing: -0.08em;
   margin-top: 1.5rem;
 }
 
 .tagline .tagline-light {
-  font-weight: 300; /* NEW: Lighter weight for "RICARDO" and "404" */
+  font-weight: 300;
 }
-/* --- END OF UPDATED STYLES --- */
 
 .section-title {
   font-size: clamp(2.5rem, 8vw, 5rem);
@@ -153,14 +147,64 @@ p {
 }
 
 /* ==========================================================================
+   About Section
+   ========================================================================== */
+.about .content-container {
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
+  gap: 4rem;
+}
+
+.about-left {
+  flex: 1;
+}
+
+.about-right {
+  flex: 2;
+}
+
+.about .section-title {
+  margin-bottom: 0;
+  line-height: 1.1;
+}
+
+.about-right p {
+  margin: 0;
+  max-width: none;
+}
+
+.about-socials {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.about-socials a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.about-socials a:hover {
+  color: var(--color-primary);
+}
+
+/* ==========================================================================
    Decorative Elements
    ========================================================================== */
 .title-deco {
-  width: 0.8em;
-  height: 0.8em;
+  font-size: 0.8em;
+  line-height: 1;
   margin-left: 0.25em;
   display: inline-block;
   vertical-align: middle;
+  font-weight: 300;
+  color: var(
+    --color-text
+  ); /* UPDATED: Changed from primary to main text color */
 }
 
 /* ==========================================================================

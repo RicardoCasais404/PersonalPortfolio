@@ -31,18 +31,13 @@
           </div>
           <div class="title-line title-line-indented">
             <span>ENGINEERING</span>
-            <img
-              src="placeholder-star.svg"
-              class="title-deco"
-              aria-hidden="true"
-              alt=""
-            />
+            <!-- UPDATED: Replaced the asterisk with the diamond symbol -->
+            <span class="title-deco" aria-hidden="true">&#x2662;</span>
           </div>
           <div class="title-line">
             <span>& CREATIVE SOLUTIONS.</span>
           </div>
         </h1>
-        <!-- The tagline is now structured for individual word styling -->
         <p class="tagline">
           <span class="tagline-light">RICARDO</span>CASAIS<span
             class="tagline-light"
@@ -53,9 +48,34 @@
     </header>
 
     <section id="about" class="section about">
-      <div class="content-container">
-        <h2 class="section-title">01. About Me</h2>
-        <p>Hello! I am a passionate Full-Stack Engineer-in-training...</p>
+      <div class="content-container about-flex-container">
+        <div class="about-left">
+          <h2 class="section-title">ABOUT ME</h2>
+        </div>
+        <div class="about-right">
+          <p>
+            Hello! I am a passionate Full-Stack Engineer-in-training with a
+            focus on creating engaging, performant, and accessible web
+            applications. Currently focused on mastering modern JavaScript
+            frameworks and robust backend architecture.
+          </p>
+          <div class="about-socials">
+            <a
+              href="https://github.com/RicardoCasais404"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              >GitHub</a
+            >
+            <a
+              href="https://www.linkedin.com/in/ricardocasais404/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              >LinkedIn</a
+            >
+          </div>
+        </div>
       </div>
     </section>
 
@@ -65,12 +85,18 @@
         <div class="project-list">
           <article class="project-item">
             <h3 class="project-title">Project Title One</h3>
-            <p class="project-description">A brief description...</p>
+            <p class="project-description">
+              A brief description of the project and its key technologies (e.g.,
+              MERN Stack, Next.js, Django).
+            </p>
             <a href="#" class="project-link">View Project →</a>
           </article>
           <article class="project-item">
             <h3 class="project-title">Project Title Two</h3>
-            <p class="project-description">A challenging application...</p>
+            <p class="project-description">
+              A challenging application that demonstrates advanced backend logic
+              and data management.
+            </p>
             <a href="#" class="project-link">View Project →</a>
           </article>
         </div>
@@ -96,7 +122,10 @@
     <footer id="contact" class="section contact">
       <div class="content-container">
         <h2 class="section-title">Ready to Connect?</h2>
-        <p>I'm always open to discussing new opportunities...</p>
+        <p>
+          I'm always open to discussing new opportunities. Let's build something
+          great.
+        </p>
         <div class="contact-links">
           <a
             href="mailto:ricardo.casais.404@example.com"
