@@ -141,9 +141,12 @@ button {
   letter-spacing: -0.08em;
   margin-top: 1.5rem;
 }
-.tagline .tagline-light {
+
+/* This is the key change: Making .tagline-light a global helper class */
+.tagline-light {
   font-weight: 300;
 }
+
 .section-title {
   font-size: clamp(2.5rem, 8vw, 5rem);
   font-weight: 800;
@@ -376,6 +379,12 @@ p {
   font-weight: 800;
 }
 
+.footer-tagline {
+  font-weight: 800;
+  letter-spacing: -0.08em;
+  margin: 0 0.25em;
+}
+
 /* --------------- SECTION DIVIDER & ANIMATIONS --------------- */
 .section-divider {
   width: 100%;
@@ -406,7 +415,6 @@ p {
 .marquee-content span {
   white-space: nowrap;
   flex-shrink: 0;
-  /* Increased font size for more visual impact */
   font-size: 1.8rem;
   font-weight: 500;
   color: var(--color-text);
