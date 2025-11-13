@@ -3,6 +3,7 @@
   --color-text: #26150f;
   --color-background: #d9d9d9;
   --font-main: "Inter", sans-serif;
+  --left-column-width: 100px; /* Define column width as a variable */
 }
 
 * {
@@ -27,64 +28,86 @@ button {
   cursor: default;
 }
 
-/* --------------- NAVBAR --------------- */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 2rem 0;
-  background-color: hsl(0, 0%, 85%);
-  backdrop-filter: blur(10px);
-  z-index: 100;
+/* --------------- NEW: TWO-COLUMN LAYOUT --------------- */
+.site-container {
+  display: flex;
 }
 
-.navbar-content {
-  width: 100%;
-  padding: 0 3vw;
-  margin: 0 auto;
+.left-column {
+  width: var(--left-column-width);
+  flex-shrink: 0; /* Prevents the column from shrinking */
+  height: 100vh;
+  position: sticky; /* Magic! This makes it stick */
+  top: 0;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  padding: 2.5rem 0;
+  border-right: 1px solid var(--color-text);
 }
 
+.right-column {
+  width: 100%;
+  flex-grow: 1; /* Allows the column to grow and fill remaining space */
+}
+
+/* --------------- UPDATED: NAVBAR (LEFT COLUMN) STYLES --------------- */
 .navbar-logo {
   text-decoration: none;
   color: var(--color-text);
-  font-size: 3.5rem;
+  font-size: 3.2rem;
   font-weight: 300;
   line-height: 1;
-  transition: transform 0.5s ease-in-out;
+  padding: 0.5rem 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
 }
 
 .navbar-logo:hover {
   transform: rotate(90deg);
 }
 
+.nav-links {
+  display: flex;
+  flex-direction: column; /* Stack links vertically */
+  align-items: center;
+  gap: 2rem;
+}
+
 .nav-links a {
   position: relative;
   text-transform: uppercase;
   text-decoration: none;
-  margin: 0 1.5rem;
   font-weight: 500;
   color: var(--color-text);
-  padding-bottom: 8px;
+  padding: 0.5rem;
+  /* Cool vertical text effect */
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  transition: transform 0.3s ease;
 }
+
 .nav-links a::after {
   content: "";
   position: absolute;
-  bottom: 0;
+  /* Position it on the "left" side of the vertical text */
   left: 0;
-  width: 0;
-  height: 2px;
+  bottom: 0;
+  width: 1px; /* The thickness of the line */
+  height: 0; /* Starts with zero height */
   background-color: var(--color-text);
-  transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-}
-.nav-links a:hover::after {
-  width: 100%;
+  /* Use the same transition as other links for consistency */
+  transition: height 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* --------------- SECTIONS & TYPOGRAPHY --------------- */
+.nav-links a:hover::after {
+  height: 100%; /* Animate to full height */
+}
+
+/* --------------- SECTIONS & TYPOGRAPHY (Adjusted Padding) --------------- */
 .section {
   width: 100%;
   display: flex;
@@ -92,12 +115,13 @@ button {
   justify-content: center;
   position: relative;
   min-height: auto;
+  /* Adjust padding to account for the left column */
   padding: 0 5%;
 }
 
 .header-hero {
   min-height: 100vh;
-  padding-top: 100px;
+  /* CORRECTED: Removed padding-top: 8rem; to allow true vertical centering */
   text-align: left;
 }
 
@@ -142,7 +166,6 @@ button {
   margin-top: 1.5rem;
 }
 
-/* This is the key change: Making .tagline-light a global helper class */
 .tagline-light {
   font-weight: 300;
 }

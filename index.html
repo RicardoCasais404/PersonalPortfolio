@@ -13,9 +13,10 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-      <div class="navbar-content">
+    <!-- NEW: Main container for the two-column layout -->
+    <div class="site-container">
+      <!-- NEW: Left column for fixed navigation -->
+      <div class="left-column">
         <a href="#hero" class="navbar-logo" aria-label="Back to top"
           >&#x2662;</a
         >
@@ -25,253 +26,265 @@
           <a href="#contact">Contact</a>
         </div>
       </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <header id="hero" class="section header-hero">
-      <div class="content-container">
-        <h1 class="main-title">
-          <div class="title-line">
-            <span>FULL-STACK</span>
-          </div>
-          <div class="title-line title-line-indented">
-            <span>ENGINEERING</span>
-            <span class="title-deco" aria-hidden="true">&#x2662;</span>
-          </div>
-          <div class="title-line">
-            <span>& CREATIVE SOLUTIONS.</span>
-          </div>
-        </h1>
-        <!-- CLASS="TAGLINE" IS NOW CORRECTLY RESTORED -->
-        <p class="tagline">
-          <span class="tagline-light">RICARDO</span>CASAIS<span
-            class="tagline-light"
-            >404</span
-          >
-        </p>
-      </div>
-    </header>
-
-    <!-- About Section -->
-    <section id="about" class="section about">
-      <div class="content-container about-flex-container">
-        <div class="about-left">
-          <h2 class="section-title">ABOUT ME</h2>
-        </div>
-        <div class="about-right">
-          <p>
-            Hello! My name is Ricardo, I'm based in Portugal and I'm a creative
-            and driven Full-Stack Engineer-in-training with a strong passion for
-            front-end development and visual design. I specialize in crafting
-            beautiful, animated, and dynamic websites by pairing modern
-            JavaScript frameworks with expressive, well-structured CSS. My focus
-            is on building engaging user experiences that are not only
-            performant and accessible but also visually captivating. While my
-            heart lies in front-end development, I'm actively expanding my
-            skills in backend architecture to become a well-rounded developer. I
-            love turning ideas into interactive digital experiences and
-            continuously push myself to learn, experiment, and grow.
-          </p>
-          <div class="about-socials">
-            <a
-              href="https://github.com/RicardoCasais404"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-              >GitHub</a
-            >
-            <a
-              href="https://www.linkedin.com/in/ricardocasais404/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              >LinkedIn</a
-            >
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section Divider -->
-    <div class="section-divider">
-      <div class="content-container">
-        <div class="marquee">
-          <div class="marquee-content">
-            <span>❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖</span>
-            <span>❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Experience Section -->
-    <section id="projects" class="section projects">
-      <div class="content-container">
-        <h2 class="section-title work-experience-title">
-          <span class="title-line">MY WORK</span>
-          <span class="title-line"
-            ><span class="title-deco-diamond">&#x2666;</span>EXPERIENCE</span
-          >
-        </h2>
-        <div class="accordion">
-          <!-- Accordion Item 1 -->
-          <div class="accordion-item">
-            <button class="accordion-header">
-              <span class="accordion-col">01</span>
-              <span class="accordion-col">JUNE 2021 - JUNE 2022 REMOTE</span>
-              <span class="accordion-col">TECHFLOW INC</span>
-              <span class="accordion-col"
-                >SENIOR SOFTWARE ENGINEER - CONTRACT</span
+      <!-- NEW: Right column for all scrollable content -->
+      <main class="right-column">
+        <!-- Hero Section -->
+        <header id="hero" class="section header-hero">
+          <div class="content-container">
+            <h1 class="main-title">
+              <div class="title-line">
+                <span>FULL-STACK</span>
+              </div>
+              <div class="title-line title-line-indented">
+                <span>ENGINEERING</span>
+                <span class="title-deco" aria-hidden="true">&#x2662;</span>
+              </div>
+              <div class="title-line">
+                <span>& CREATIVE SOLUTIONS.</span>
+              </div>
+            </h1>
+            <p class="tagline">
+              <span class="tagline-light">RICARDO</span>CASAIS<span
+                class="tagline-light"
+                >404</span
               >
-              <span class="accordion-plus">+</span>
-            </button>
-            <div class="accordion-content">
-              <div class="accordion-content-inner">
-                <p>
-                  A more detailed description of my role at Techflow Inc, where
-                  I worked on refactoring legacy code and enhancing developer
-                  workflows. This section can contain a couple of paragraphs
-                  explaining the impact and technologies used.
-                </p>
+            </p>
+          </div>
+        </header>
+
+        <!-- About Section -->
+        <section id="about" class="section about">
+          <div class="content-container about-flex-container">
+            <div class="about-left">
+              <h2 class="section-title">ABOUT ME</h2>
+            </div>
+            <div class="about-right">
+              <p>
+                Hello! My name is Ricardo, I'm based in Portugal and I'm a
+                creative and driven Full-Stack Engineer-in-training with a
+                strong passion for front-end development and visual design. I
+                specialize in crafting beautiful, animated, and dynamic websites
+                by pairing modern JavaScript frameworks with expressive,
+                well-structured CSS. My focus is on building engaging user
+                experiences that are not only performant and accessible but also
+                visually captivating. While my heart lies in front-end
+                development, I'm actively expanding my skills in backend
+                architecture to become a well-rounded developer. I love turning
+                ideas into interactive digital experiences and continuously push
+                myself to learn, experiment, and grow.
+              </p>
+              <div class="about-socials">
+                <a
+                  href="https://github.com/RicardoCasais404"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                  >GitHub</a
+                >
+                <a
+                  href="https://www.linkedin.com/in/ricardocasais404/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  >LinkedIn</a
+                >
               </div>
             </div>
           </div>
+        </section>
 
-          <!-- Accordion Item 2 -->
-          <div class="accordion-item">
-            <button class="accordion-header">
-              <span class="accordion-col">02</span>
-              <span class="accordion-col">MARCH 2020 - MARCH 2021 REMOTE</span>
-              <span class="accordion-col">INNOVATE TECH</span>
-              <span class="accordion-col"
-                >SENIOR BACKEND DEVELOPER - CONTRACT</span
+        <!-- Section Divider -->
+        <div class="section-divider">
+          <div class="content-container">
+            <div class="marquee">
+              <div class="marquee-content">
+                <span>❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖</span>
+                <span>❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience Section -->
+        <section id="projects" class="section projects">
+          <div class="content-container">
+            <h2 class="section-title work-experience-title">
+              <span class="title-line">MY WORK</span>
+              <span class="title-line"
+                ><span class="title-deco-diamond">&#x2666;</span
+                >EXPERIENCE</span
               >
-              <span class="accordion-plus">+</span>
-            </button>
-            <div class="accordion-content">
-              <div class="accordion-content-inner">
-                <p>
-                  At Innovate Tech, I was responsible for overhauling existing
-                  microservices for scalability and implementing new CI/CD
-                  solutions. This experience honed my skills in backend
-                  architecture and cloud infrastructure.
-                </p>
+            </h2>
+            <div class="accordion">
+              <!-- Accordion Item 1 -->
+              <div class="accordion-item">
+                <button class="accordion-header">
+                  <span class="accordion-col">01</span>
+                  <span class="accordion-col"
+                    >JUNE 2021 - JUNE 2022 REMOTE</span
+                  >
+                  <span class="accordion-col">TECHFLOW INC</span>
+                  <span class="accordion-col"
+                    >SENIOR SOFTWARE ENGINEER - CONTRACT</span
+                  >
+                  <span class="accordion-plus">+</span>
+                </button>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    <p>
+                      A more detailed description of my role at Techflow Inc,
+                      where I worked on refactoring legacy code and enhancing
+                      developer workflows. This section can contain a couple of
+                      paragraphs explaining the impact and technologies used.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Accordion Item 2 -->
+              <div class="accordion-item">
+                <button class="accordion-header">
+                  <span class="accordion-col">02</span>
+                  <span class="accordion-col"
+                    >MARCH 2020 - MARCH 2021 REMOTE</span
+                  >
+                  <span class="accordion-col">INNOVATE TECH</span>
+                  <span class="accordion-col"
+                    >SENIOR BACKEND DEVELOPER - CONTRACT</span
+                  >
+                  <span class="accordion-plus">+</span>
+                </button>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    <p>
+                      At Innovate Tech, I was responsible for overhauling
+                      existing microservices for scalability and implementing
+                      new CI/CD solutions. This experience honed my skills in
+                      backend architecture and cloud infrastructure.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Accordion Item 3 -->
+              <div class="accordion-item">
+                <button class="accordion-header">
+                  <span class="accordion-col">03</span>
+                  <span class="accordion-col">AUG 2019 - AUG 2020 REMOTE</span>
+                  <span class="accordion-col">DEV SOLUTIONS</span>
+                  <span class="accordion-col"
+                    >PRINCIPAL ENGINEER - CONTRACT</span
+                  >
+                  <span class="accordion-plus">+</span>
+                </button>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    <p>
+                      As a Principal Engineer, I led initiatives to upgrade and
+                      maintain critical infrastructure, improving performance
+                      and reliability across the board. This is where I can talk
+                      about leadership and high-level technical decisions.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+        </section>
 
-          <!-- Accordion Item 3 -->
-          <div class="accordion-item">
-            <button class="accordion-header">
-              <span class="accordion-col">03</span>
-              <span class="accordion-col">AUG 2019 - AUG 2020 REMOTE</span>
-              <span class="accordion-col">DEV SOLUTIONS</span>
-              <span class="accordion-col">PRINCIPAL ENGINEER - CONTRACT</span>
-              <span class="accordion-plus">+</span>
-            </button>
-            <div class="accordion-content">
-              <div class="accordion-content-inner">
-                <p>
-                  As a Principal Engineer, I led initiatives to upgrade and
-                  maintain critical infrastructure, improving performance and
-                  reliability across the board. This is where I can talk about
-                  leadership and high-level technical decisions.
-                </p>
+        <!-- Section Divider -->
+        <div class="section-divider">
+          <div class="content-container">
+            <div class="marquee">
+              <div class="marquee-content">
+                <span>❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖</span>
+                <span>❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖</span>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Section Divider -->
-    <div class="section-divider">
-      <div class="content-container">
-        <div class="marquee">
-          <div class="marquee-content">
-            <span>❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖</span>
-            <span>❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖</span>
+        <!-- Skills Section -->
+        <section id="skills" class="section skills">
+          <div class="content-container">
+            <h2 class="section-title">Tech Stack</h2>
+            <div class="skill-list-container">
+              <span class="skill-list-item">JavaScript</span>
+              <span class="skill-list-item">HTML5</span>
+              <span class="skill-list-item">CSS3</span>
+              <span class="skill-list-item">Node.js</span>
+              <span class="skill-list-item">Python</span>
+              <span class="skill-list-item">SQL</span>
+              <span class="skill-list-item">GSAP</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section Divider -->
+        <div class="section-divider">
+          <div class="content-container">
+            <div class="marquee">
+              <div class="marquee-content">
+                <span>❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖</span>
+                <span>❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖</span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section skills">
-      <div class="content-container">
-        <h2 class="section-title">Tech Stack</h2>
-        <div class="skill-list-container">
-          <span class="skill-list-item">JavaScript</span>
-          <span class="skill-list-item">HTML5</span>
-          <span class="skill-list-item">CSS3</span>
-          <span class="skill-list-item">Node.js</span>
-          <span class="skill-list-item">Python</span>
-          <span class="skill-list-item">SQL</span>
-          <span class="skill-list-item">GSAP</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section Divider -->
-    <div class="section-divider">
-      <div class="content-container">
-        <div class="marquee">
-          <div class="marquee-content">
-            <span>❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖</span>
-            <span>❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖❖</span>
+        <!-- Contact Section -->
+        <section id="contact" class="section contact">
+          <div class="content-container">
+            <h2 class="section-title">Ready to Connect?</h2>
+            <p>
+              I'm always open to discussing new opportunities. Let's build
+              something great.
+            </p>
+            <div class="contact-links">
+              <a
+                href="mailto:ricardo.casais.404@example.com"
+                class="contact-link email-btn"
+                >Email Me</a
+              >
+              <a
+                href="https://github.com/RicardoCasais404"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-link"
+                >GitHub</a
+              >
+              <a
+                href="https://www.linkedin.com/in/ricardocasais404/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-link"
+                >LinkedIn</a
+              >
+            </div>
           </div>
-        </div>
-      </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="site-footer">
+          <div class="footer-content">
+            <p>
+              COPYRIGHT &copy;
+              <span class="footer-tagline">
+                <span class="tagline-light">RICARDO</span>CASAIS<span
+                  class="tagline-light"
+                  >404</span
+                >
+              </span>
+              2025
+            </p>
+            <p>Full-Stack Engineering & Creative Solutions</p>
+          </div>
+        </footer>
+      </main>
+      <!-- End of right column -->
     </div>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section contact">
-      <div class="content-container">
-        <h2 class="section-title">Ready to Connect?</h2>
-        <p>
-          I'm always open to discussing new opportunities. Let's build something
-          great.
-        </p>
-        <div class="contact-links">
-          <a
-            href="mailto:ricardo.casais.404@example.com"
-            class="contact-link email-btn"
-            >Email Me</a
-          >
-          <a
-            href="https://github.com/RicardoCasais404"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="contact-link"
-            >GitHub</a
-          >
-          <a
-            href="https://www.linkedin.com/in/ricardocasais404/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="contact-link"
-            >LinkedIn</a
-          >
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-      <div class="footer-content">
-        <p>
-          COPYRIGHT &copy;
-          <span class="footer-tagline">
-            <span class="tagline-light">RICARDO</span>CASAIS<span
-              class="tagline-light"
-              >404</span
-            >
-          </span>
-          2025
-        </p>
-        <p>Full-Stack Engineering & Creative Solutions</p>
-      </div>
-    </footer>
+    <!-- End of site container -->
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
