@@ -1,11 +1,7 @@
-/* ==========================================================================
-   Design System & Global Styles
-   ========================================================================== */
+/* --------------- DESIGN SYSTEM & GLOBAL STYLES --------------- */
 :root {
-  /* Colors */
   --color-text: #26150f;
   --color-background: #d9d9d9;
-  /* Fonts */
   --font-main: "Inter", sans-serif;
 }
 
@@ -31,9 +27,7 @@ button {
   cursor: default;
 }
 
-/* ==========================================================================
-   Navbar & General Typography
-   ========================================================================== */
+/* --------------- NAVBAR --------------- */
 .navbar {
   position: fixed;
   top: 0;
@@ -89,19 +83,28 @@ button {
 .nav-links a:hover::after {
   width: 100%;
 }
+
+/* --------------- SECTIONS & TYPOGRAPHY --------------- */
 .section {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20vh 5%;
   position: relative;
+  min-height: auto;
+  padding: 0 5%;
 }
+
 .header-hero {
   min-height: 100vh;
   padding-top: 100px;
   text-align: left;
 }
+
+.section:not(.header-hero) {
+  padding: 8rem 5%;
+}
+
 .content-container {
   max-width: 1100px;
   width: 100%;
@@ -161,9 +164,7 @@ p {
   font-weight: 300;
 }
 
-/* ==========================================================================
-   About Section
-   ========================================================================== */
+/* --------------- ABOUT SECTION --------------- */
 .about .content-container {
   display: flex;
   align-items: flex-start;
@@ -209,9 +210,7 @@ p {
   width: 100%;
 }
 
-/* ==========================================================================
-   Work Experience Section (Accordion)
-   ========================================================================== */
+/* --------------- WORK EXPERIENCE SECTION (ACCORDION) --------------- */
 .work-experience-title {
   text-align: center;
   margin-bottom: 4rem;
@@ -276,9 +275,7 @@ p {
   transform: rotate(45deg);
 }
 
-/* ==========================================================================
-   Skills Section (Interactive Skill List)
-   ========================================================================== */
+/* --------------- SKILLS SECTION --------------- */
 .skills .section-title {
   text-align: center;
   width: 100%;
@@ -289,8 +286,8 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap; /* Allows items to wrap on smaller screens */
-  gap: 1rem 3rem; /* Vertical and horizontal gap */
+  flex-wrap: wrap;
+  gap: 1rem 3rem;
   width: 100%;
   padding: 2rem 0;
 }
@@ -300,25 +297,17 @@ p {
   font-weight: 800;
   text-transform: uppercase;
   cursor: default;
-  /* === MODIFICATION START === */
-  /* Set the default state to be low opacity */
   opacity: 0.3;
-  /* === MODIFICATION END === */
   transition: opacity 0.5s ease, transform 0.5s ease;
   will-change: opacity, transform;
 }
 
-/* === MODIFICATION START === */
-/* Create a new hover state for the skill items */
 .skill-list-item:hover {
   opacity: 1;
   transform: scale(1.1);
 }
-/* === MODIFICATION END === */
 
-/* ==========================================================================
-   Contact Section
-   ========================================================================== */
+/* --------------- CONTACT SECTION --------------- */
 .contact .content-container {
   text-align: left;
 }
@@ -364,9 +353,7 @@ p {
   color: var(--color-text);
 }
 
-/* ==========================================================================
-   Footer
-   ========================================================================== */
+/* --------------- FOOTER --------------- */
 .site-footer {
   width: 100%;
   padding: 3rem 5%;
@@ -386,20 +373,53 @@ p {
 }
 
 .footer-content strong {
-  font-weight: 800; /* Bolder weight for your name */
+  font-weight: 800;
 }
 
-.footer-socials a {
-  text-decoration: none;
+/* --------------- SECTION DIVIDER & ANIMATIONS --------------- */
+.section-divider {
+  width: 100%;
+  padding: 4rem 0;
+}
+
+.section-divider .content-container {
+  max-width: 600px;
+}
+
+.marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 45%,
+    black 55%,
+    transparent
+  );
+  padding: 1rem 0;
+}
+
+.marquee-content {
+  display: flex;
+  animation: scroll 15s linear infinite;
+}
+
+.marquee-content span {
+  white-space: nowrap;
+  flex-shrink: 0;
+  /* Increased font size for more visual impact */
+  font-size: 1.8rem;
+  font-weight: 500;
   color: var(--color-text);
-  margin: 0 1rem;
-  transition: opacity 0.3s ease;
+  opacity: 1;
+  letter-spacing: 2.5rem;
+  padding: 0 1.25rem;
 }
 
-.footer-socials a:hover {
-  opacity: 0.7;
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
-
-/* ==========================================================================
-   Animations (No longer needed for logo)
-   ========================================================================== */
