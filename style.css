@@ -26,13 +26,10 @@ body {
   overflow-x: hidden;
 }
 
-/* === MODIFICATION START === */
-/* Set a default cursor for all links and buttons */
 a,
 button {
   cursor: default;
 }
-/* === MODIFICATION END === */
 
 /* ==========================================================================
    Navbar & General Typography
@@ -42,13 +39,15 @@ button {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 2rem 5%;
+  padding: 2rem 0;
   background-color: hsl(0, 0%, 85%);
   backdrop-filter: blur(10px);
   z-index: 100;
 }
+
 .navbar-content {
-  max-width: 1200px;
+  width: 100%;
+  padding: 0 3vw;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -58,16 +57,14 @@ button {
 .navbar-logo {
   text-decoration: none;
   color: var(--color-text);
-  /* === MODIFICATION START === */
-  font-size: 3.5rem; /* Increased from 3rem */
-  /* === MODIFICATION END === */
+  font-size: 3.5rem;
   font-weight: 300;
   line-height: 1;
   transition: transform 0.5s ease-in-out;
 }
 
 .navbar-logo:hover {
-  animation: pulsate 1.5s infinite ease-in-out;
+  transform: rotate(90deg);
 }
 
 .nav-links a {
@@ -242,7 +239,6 @@ p {
   text-align: left;
   background-color: transparent;
   border: none;
-  /* The cursor is now inherited from the global button style */
   font-family: var(--font-main);
   font-size: 1.1rem;
   font-weight: 500;
@@ -300,14 +296,25 @@ p {
 }
 
 .skill-list-item {
-  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-size: clamp(1.8rem, 6.5vw, 3.8rem);
   font-weight: 800;
   text-transform: uppercase;
   cursor: default;
-  /* The transition is the heart of the elegant effect */
+  /* === MODIFICATION START === */
+  /* Set the default state to be low opacity */
+  opacity: 0.3;
+  /* === MODIFICATION END === */
   transition: opacity 0.5s ease, transform 0.5s ease;
-  will-change: opacity, transform; /* Performance optimization */
+  will-change: opacity, transform;
 }
+
+/* === MODIFICATION START === */
+/* Create a new hover state for the skill items */
+.skill-list-item:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+/* === MODIFICATION END === */
 
 /* ==========================================================================
    Contact Section
@@ -394,18 +401,5 @@ p {
 }
 
 /* ==========================================================================
-   Animations
+   Animations (No longer needed for logo)
    ========================================================================== */
-
-/* Keyframe animation for the logo's pulsating effect */
-@keyframes pulsate {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.15);
-  }
-  100% {
-    transform: scale(1);
-  }
-}

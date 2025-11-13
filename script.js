@@ -78,44 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
       );
   });
 
-  // --- INTERACTIVE SKILL LIST ---
-  const skillList = document.querySelector(".skill-list-container");
-
-  if (skillList) {
-    const skillItems = document.querySelectorAll(".skill-list-item");
-
-    const handleMouseMove = (e) => {
-      skillItems.forEach((item) => {
-        const rect = item.getBoundingClientRect();
-        const isInside =
-          e.clientX >= rect.left &&
-          e.clientX <= rect.right &&
-          e.clientY >= rect.top &&
-          e.clientY <= rect.bottom;
-
-        if (isInside) {
-          item.style.opacity = "1";
-          item.style.transform = "scale(1.1)";
-        } else {
-          item.style.opacity = "0.3";
-          item.style.transform = "scale(1)";
-        }
-      });
-    };
-
-    const handleMouseLeave = () => {
-      skillItems.forEach((item) => {
-        item.style.opacity = "1";
-        item.style.transform = "scale(1)";
-      });
-    };
-
-    skillList.addEventListener("mousemove", handleMouseMove);
-    skillList.addEventListener("mouseleave", handleMouseLeave);
-
-    handleMouseLeave();
-  }
-
   // --- ACCORDION LOGIC ---
   const accordionItems = document.querySelectorAll(".accordion-item");
 
