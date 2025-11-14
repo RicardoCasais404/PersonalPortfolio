@@ -236,7 +236,7 @@ p {
   width: 100%;
 }
 
-/* --------------- WORK EXPERIENCE SECTION (ACCORDION) --------------- */
+/* --------------- WORK EXPERIENCE (TIMELINE) --------------- */
 .work-experience-title {
   text-align: center;
   margin-bottom: 4rem;
@@ -248,57 +248,73 @@ p {
   font-size: 0.8em;
   margin-right: 0.25em;
 }
-.accordion {
-  width: 100%;
-  border-bottom: 1px solid var(--color-text);
+.timeline-container {
+  position: relative;
+  padding: 2rem 0;
 }
-.accordion-item {
-  border-top: 1px solid var(--color-text);
-}
-.accordion-header {
-  display: grid;
-  grid-template-columns: 0.5fr 1.5fr 1fr 2fr 0.5fr;
-  gap: 1rem;
-  width: 100%;
-  padding: 2rem 1rem;
-  text-align: left;
-  background-color: transparent;
-  border: none;
-  font-family: var(--font-main);
-  font-size: 1.1rem;
-  font-weight: 500;
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-}
-.accordion-header:hover {
-  transform: translateX(10px);
-}
-.accordion-col {
+.timeline-middle {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 100%;
+  transform: translateX(-50%);
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
-.accordion-plus {
-  justify-self: end;
-  font-size: 1.5rem;
-  font-weight: 400;
-  transition: transform 0.3s ease;
+.timeline-line {
+  width: 1px;
+  height: 100%;
+  background-color: var(--color-text);
+  opacity: 0.3;
 }
-.accordion-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.5s ease-out;
+.timeline-point {
+  position: absolute;
+  top: 0; /* Start at the very top of the parent container */
+  left: 50%; /* Center horizontally within the parent */
+  font-size: 2.5rem;
+  line-height: 1;
+  color: var(--color-text);
+  /* New transform to perfectly center the symbol on the line */
+  transform: translateX(-50%);
 }
-.accordion-content-inner {
-  padding: 0 1rem 2rem 1rem;
+.timeline-item {
   display: grid;
-  grid-template-columns: 0.5fr 1.5fr 3fr;
-  gap: 1rem;
+  grid-template-columns: 1fr 80px 1fr; /* Left col | Gap | Right col */
+  align-items: start;
+  margin-bottom: 2rem;
 }
-.accordion-content-inner p {
-  grid-column: 2 / -1;
-  max-width: 60ch;
+.timeline-item:last-child {
+  margin-bottom: 0;
 }
-.accordion-item.active .accordion-plus {
-  transform: rotate(45deg);
+.timeline-content {
+  padding: 1rem 2rem;
+}
+.timeline-content.left {
+  grid-column: 1 / 2;
+  text-align: right;
+}
+.timeline-content.right {
+  grid-column: 3 / 4;
+  text-align: left;
+}
+.timeline-content h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.timeline-content span {
+  font-size: 1rem;
+  font-weight: 500;
+  display: block;
+  margin: 0.25rem 0 0.5rem;
+}
+.timeline-content small {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+.timeline-content p {
+  max-width: 45ch;
 }
 
 /* --------------- SKILLS SECTION --------------- */
@@ -411,7 +427,7 @@ p {
 /* --------------- SECTION DIVIDER & ANIMATIONS --------------- */
 .section-divider {
   width: 100%;
-  padding: 4rem 0;
+  padding: 2rem 0;
 }
 
 .section-divider .content-container {
@@ -438,12 +454,12 @@ p {
 .marquee-content span {
   white-space: nowrap;
   flex-shrink: 0;
-  font-size: 1.8rem;
+  font-size: 1.2rem;
   font-weight: 500;
   color: var(--color-text);
   opacity: 1;
-  letter-spacing: 2.5rem;
-  padding: 0 1.25rem;
+  letter-spacing: 2rem;
+  padding: 0 1rem;
 }
 
 @keyframes scroll {
@@ -453,9 +469,4 @@ p {
   to {
     transform: translateX(-50%);
   }
-}
-
-.animated-section .content-container {
-  opacity: 0;
-  visibility: hidden;
 }
