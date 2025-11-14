@@ -5,24 +5,20 @@
   --font-main: "Inter", sans-serif;
   --left-column-width: 100px; /* Define column width as a variable */
 }
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 html {
   scroll-behavior: smooth;
 }
-
 body {
   font-family: var(--font-main);
   background-color: var(--color-background);
   color: var(--color-text);
   overflow-x: hidden;
 }
-
 a,
 button {
   cursor: default;
@@ -32,7 +28,6 @@ button {
 .site-container {
   display: flex;
 }
-
 .left-column {
   width: var(--left-column-width);
   flex-shrink: 0; /* Prevents the column from shrinking */
@@ -46,7 +41,6 @@ button {
   padding: 2.5rem 0;
   border-right: 1px solid var(--color-text);
 }
-
 .right-column {
   width: 100%;
   flex-grow: 1; /* Allows the column to grow and fill remaining space */
@@ -65,18 +59,15 @@ button {
   justify-content: center;
   transition: transform 0.3s ease;
 }
-
 .navbar-logo:hover {
   transform: rotate(90deg);
 }
-
 .nav-links {
   display: flex;
   flex-direction: column; /* Stack links vertically */
   align-items: center;
   gap: 2rem;
 }
-
 .nav-links a {
   position: relative;
   text-transform: uppercase;
@@ -89,7 +80,6 @@ button {
   transform: rotate(180deg);
   transition: transform 0.3s ease;
 }
-
 .nav-links a::after {
   content: "";
   position: absolute;
@@ -102,7 +92,6 @@ button {
   /* Use the same transition as other links for consistency */
   transition: height 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
-
 .nav-links a:hover::after {
   height: 100%; /* Animate to full height */
 }
@@ -121,14 +110,22 @@ button {
 
 .header-hero {
   min-height: 100vh;
-  /* CORRECTED: Removed padding-top: 8rem; to allow true vertical centering */
   text-align: left;
+  /* THE CRITICAL Z-INDEX FIX */
+  z-index: 10;
+  background-color: var(
+    --color-background
+  ); /* This is essential to hide content scrolling underneath */
+}
+
+#about {
+  /* This ensures the About section scrolls UNDER the hero */
+  z-index: 5;
 }
 
 .section:not(.header-hero) {
   padding: 8rem 5%;
 }
-
 .content-container {
   max-width: 1100px;
   width: 100%;
@@ -151,6 +148,9 @@ button {
   flex-direction: column;
   align-items: flex-start;
 }
+.title-mask {
+  overflow: hidden;
+}
 .title-line {
   display: flex;
   align-items: center;
@@ -165,11 +165,9 @@ button {
   letter-spacing: -0.08em;
   margin-top: 1.5rem;
 }
-
 .tagline-light {
   font-weight: 300;
 }
-
 .section-title {
   font-size: clamp(2.5rem, 8vw, 5rem);
   font-weight: 800;
@@ -323,7 +321,6 @@ p {
   width: 100%;
   margin-bottom: 4rem;
 }
-
 .skill-list-container {
   display: flex;
   justify-content: center;
@@ -333,7 +330,6 @@ p {
   width: 100%;
   padding: 2rem 0;
 }
-
 .skill-list-item {
   font-size: clamp(1.8rem, 6.5vw, 3.8rem);
   font-weight: 800;
@@ -343,7 +339,6 @@ p {
   transition: opacity 0.5s ease, transform 0.5s ease;
   will-change: opacity, transform;
 }
-
 .skill-list-item:hover {
   opacity: 1;
   transform: scale(1.1);
@@ -401,7 +396,6 @@ p {
   padding: 3rem 5%;
   min-height: auto;
 }
-
 .footer-content {
   width: 100%;
   max-width: 1200px;
@@ -413,11 +407,9 @@ p {
   font-weight: 500;
   text-transform: uppercase;
 }
-
 .footer-content strong {
   font-weight: 800;
 }
-
 .footer-tagline {
   font-weight: 800;
   letter-spacing: -0.08em;
@@ -429,11 +421,9 @@ p {
   width: 100%;
   padding: 2rem 0;
 }
-
 .section-divider .content-container {
   max-width: 600px;
 }
-
 .marquee {
   overflow: hidden;
   mask-image: linear-gradient(
@@ -445,12 +435,10 @@ p {
   );
   padding: 1rem 0;
 }
-
 .marquee-content {
   display: flex;
   animation: scroll 15s linear infinite;
 }
-
 .marquee-content span {
   white-space: nowrap;
   flex-shrink: 0;
@@ -461,7 +449,6 @@ p {
   letter-spacing: 2rem;
   padding: 0 1rem;
 }
-
 @keyframes scroll {
   from {
     transform: translateX(0);
