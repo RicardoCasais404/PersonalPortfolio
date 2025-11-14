@@ -1,79 +1,12 @@
 /**
- * @file Manages scroll animations and accordion functionality for the portfolio page.
+ * @file Manages accordion and scroll animations for the portfolio page.
  * @author Ricardo Casais
- * @uses gsap
- * @uses ScrollTrigger
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-  gsap.registerPlugin(ScrollTrigger);
-
-  // --- Hero Section Animations ---
-
-  // This correctly animates the title and tagline IN on page load.
-  gsap.from(".header-hero .main-title > *, .header-hero .tagline", {
-    delay: 0.2,
-    duration: 1,
-    y: 100,
-    opacity: 0,
-    stagger: 0.2,
-    ease: "power3.out",
-  });
-
-  const heroTimeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".header-hero",
-      start: "1px top",
-      end: "bottom 50%",
-      scrub: 1.5,
-    },
-  });
-
-  // CORRECTED: The tagline is now included here again, so it will fade OUT with the main title on scroll.
-  heroTimeline.to(".header-hero .title-line > span, .header-hero .tagline", {
-    opacity: 0,
-    stagger: 0.1,
-    ease: "none",
-  });
-
-  // --- UNIFORM FADE ANIMATIONS FOR ALL SECTIONS & DIVIDERS ---
-
-  const scrollElements = gsap.utils.toArray(
-    ".section:not(.header-hero), .section-divider"
-  );
-
-  scrollElements.forEach((element) => {
-    const contentElements = element.classList.contains("section-divider")
-      ? element
-      : element.querySelectorAll(
-          ".section-title, p, .about-socials, .accordion, .skill-list-container, .contact-links"
-        );
-
-    gsap.set(contentElements, { opacity: 0 });
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: element,
-        start: "top 65%",
-        end: "bottom 35%",
-        scrub: 2,
-      },
-    });
-
-    tl.to(contentElements, {
-      opacity: 1,
-      ease: "power1.in",
-    });
-
-    tl.to(contentElements, {
-      opacity: 0,
-      ease: "power1.out",
-    });
-  });
-
-  // --- Accordion Functionality ---
-
+  // --- Accordion Logic ---
   const accordionItems = document.querySelectorAll(".accordion-item");
+  const accordionTransitionDuration = 500; // This must match the CSS transition time (0.5s)
 
   accordionItems.forEach((item) => {
     const header = item.querySelector(".accordion-header");
@@ -82,20 +15,86 @@ document.addEventListener("DOMContentLoaded", () => {
     header.addEventListener("click", () => {
       const isActive = item.classList.contains("active");
 
+      // Close all other tabs
       accordionItems.forEach((otherItem) => {
-        otherItem.classList.remove("active");
-        otherItem.querySelector(".accordion-content").style.maxHeight = "0px";
+        if (otherItem !== item) {
+          otherItem.classList.remove("active");
+          otherItem.querySelector(".accordion-content").style.maxHeight = "0px";
+          otherItem
+            .querySelector(".accordion-header")
+            .setAttribute("aria-expanded", "false");
+        }
       });
 
-      if (!isActive) {
+      // Toggle the clicked tab
+      if (isActive) {
+        item.classList.remove("active");
+        content.style.maxHeight = "0px";
+        header.setAttribute("aria-expanded", "false");
+      } else {
         item.classList.add("active");
         content.style.maxHeight = content.scrollHeight + "px";
+        header.setAttribute("aria-expanded", "true");
+      }
+
+      // CRITICAL: Refresh ScrollTrigger after the accordion animation completes.
+      // We use a timeout to wait for the CSS transition to finish before recalculating.
+      if (typeof ScrollTrigger !== "undefined") {
+        setTimeout(() => {
+          ScrollTrigger.refresh();
+        }, accordionTransitionDuration);
       }
     });
   });
-});
 
-// --- ROBUST REFRESH LOGIC ---
-window.addEventListener("load", () => {
-  ScrollTrigger.refresh();
+  // --- Animation Logic ---
+  // This function contains all our GSAP animations.
+  const initAnimations = () => {
+    // Make GSAP aware of the ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Select all sections we want to animate using the class we added
+    const animatedSections = gsap.utils.toArray(".animated-section");
+
+    animatedSections.forEach((section) => {
+      // We animate the content container inside each section
+      const content = section.querySelector(".content-container");
+
+      // Create a dedicated timeline for each section's animation
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top 85%", // Animation starts when the top of the section is 85% down from the viewport top
+          end: "bottom 15%", // Animation ends when the bottom of the section is 15% down from the viewport top
+          scrub: 1, // Smoothly links animation progress to scroll position
+        },
+      });
+
+      // This is the "scanner" effect timeline:
+      // 1. Fade IN and move UP
+      tl.fromTo(
+        content,
+        { autoAlpha: 0, y: 75 },
+        { autoAlpha: 1, y: 0, duration: 1, ease: "power2.out" }
+      )
+        // 2. Keep it fully visible for a duration while scrolling through the center
+        .to(content, { autoAlpha: 1, y: 0, duration: 2 })
+        // 3. Fade OUT and move UP
+        .to(content, { autoAlpha: 0, y: -75, duration: 1, ease: "power2.in" });
+    });
+  };
+
+  // --- Font Loading & Initialization ---
+  // CRITICAL: We wait for the browser's fonts to be fully loaded and ready.
+  // This completely solves the race condition and ensures GSAP measures the correct layout.
+  document.fonts.ready
+    .then(() => {
+      // Now that fonts are loaded, it's safe to initialize our animations.
+      initAnimations();
+    })
+    .catch((error) => {
+      console.error("An error occurred while loading fonts:", error);
+      // As a fallback in case of error, initialize animations anyway.
+      initAnimations();
+    });
 });

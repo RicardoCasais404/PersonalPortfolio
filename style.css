@@ -156,7 +156,7 @@ button {
   align-items: center;
 }
 .title-line-indented {
-  margin-left: 10%;
+  margin-left: 4%;
 }
 .tagline {
   text-transform: uppercase;
@@ -453,4 +453,9 @@ p {
   to {
     transform: translateX(-50%);
   }
+}
+
+.animated-section .content-container {
+  opacity: 0;
+  visibility: hidden;
 }
