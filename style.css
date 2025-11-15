@@ -1,9 +1,9 @@
-/* --------------- DESIGN SYSTEM & GLOBAL STYLES --------------- */
+/* Globals & Design System */
 :root {
   --color-text: #26150f;
   --color-background: #d9d9d9;
   --font-main: "Inter", sans-serif;
-  --left-column-width: 100px; /* Define column width as a variable */
+  --left-column-width: 100px;
 }
 * {
   margin: 0;
@@ -24,15 +24,15 @@ button {
   cursor: default;
 }
 
-/* --------------- NEW: TWO-COLUMN LAYOUT --------------- */
+/* Main Layout */
 .site-container {
   display: flex;
 }
 .left-column {
   width: var(--left-column-width);
-  flex-shrink: 0; /* Prevents the column from shrinking */
+  flex-shrink: 0;
   height: 100vh;
-  position: sticky; /* Magic! This makes it stick */
+  position: sticky;
   top: 0;
   display: flex;
   flex-direction: column;
@@ -43,10 +43,10 @@ button {
 }
 .right-column {
   width: 100%;
-  flex-grow: 1; /* Allows the column to grow and fill remaining space */
+  flex-grow: 1;
 }
 
-/* --------------- UPDATED: NAVBAR (LEFT COLUMN) STYLES --------------- */
+/* Navigation (Left Column) */
 .navbar-logo {
   text-decoration: none;
   color: var(--color-text);
@@ -64,7 +64,7 @@ button {
 }
 .nav-links {
   display: flex;
-  flex-direction: column; /* Stack links vertically */
+  flex-direction: column;
   align-items: center;
   gap: 2rem;
 }
@@ -75,7 +75,6 @@ button {
   font-weight: 500;
   color: var(--color-text);
   padding: 0.5rem;
-  /* Cool vertical text effect */
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   transition: transform 0.3s ease;
@@ -83,20 +82,18 @@ button {
 .nav-links a::after {
   content: "";
   position: absolute;
-  /* Position it on the "left" side of the vertical text */
   left: 0;
   bottom: 0;
-  width: 1px; /* The thickness of the line */
-  height: 0; /* Starts with zero height */
+  width: 1px;
+  height: 0;
   background-color: var(--color-text);
-  /* Use the same transition as other links for consistency */
   transition: height 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .nav-links a:hover::after {
-  height: 100%; /* Animate to full height */
+  height: 100%;
 }
 
-/* --------------- SECTIONS & TYPOGRAPHY (Adjusted Padding) --------------- */
+/* Section & Typography */
 .section {
   width: 100%;
   display: flex;
@@ -104,25 +101,19 @@ button {
   justify-content: center;
   position: relative;
   min-height: auto;
-  /* Adjust padding to account for the left column */
   padding: 0 5%;
 }
-
 .header-hero {
   min-height: 100vh;
   text-align: left;
-  /* THE CRITICAL Z-INDEX FIX */
+  /* z-index is required to keep this section above others during scroll animations. */
   z-index: 10;
-  background-color: var(
-    --color-background
-  ); /* This is essential to hide content scrolling underneath */
+  background-color: var(--color-background);
 }
-
 #about {
-  /* This ensures the About section scrolls UNDER the hero */
+  /* This ensures the About section scrolls under the hero. */
   z-index: 5;
 }
-
 .section:not(.header-hero) {
   padding: 8rem 5%;
 }
@@ -188,7 +179,7 @@ p {
   font-weight: 300;
 }
 
-/* --------------- ABOUT SECTION --------------- */
+/* About Section */
 .about .content-container {
   display: flex;
   align-items: flex-start;
@@ -234,7 +225,7 @@ p {
   width: 100%;
 }
 
-/* --------------- WORK EXPERIENCE (TIMELINE) --------------- */
+/* Work Experience (Timeline) */
 .work-experience-title {
   text-align: center;
   margin-bottom: 4rem;
@@ -268,17 +259,16 @@ p {
 }
 .timeline-point {
   position: absolute;
-  top: 0; /* Start at the very top of the parent container */
-  left: 50%; /* Center horizontally within the parent */
+  top: 0;
+  left: 50%;
   font-size: 2.5rem;
   line-height: 1;
   color: var(--color-text);
-  /* New transform to perfectly center the symbol on the line */
   transform: translateX(-50%);
 }
 .timeline-item {
   display: grid;
-  grid-template-columns: 1fr 80px 1fr; /* Left col | Gap | Right col */
+  grid-template-columns: 1fr 80px 1fr;
   align-items: start;
   margin-bottom: 2rem;
 }
@@ -315,7 +305,7 @@ p {
   max-width: 45ch;
 }
 
-/* --------------- SKILLS SECTION --------------- */
+/* Skills Section */
 .skills .section-title {
   text-align: center;
   width: 100%;
@@ -344,7 +334,7 @@ p {
   transform: scale(1.1);
 }
 
-/* --------------- CONTACT SECTION --------------- */
+/* Contact Section */
 .contact .content-container {
   text-align: left;
 }
@@ -390,7 +380,7 @@ p {
   color: var(--color-text);
 }
 
-/* --------------- FOOTER --------------- */
+/* Footer */
 .site-footer {
   width: 100%;
   padding: 3rem 5%;
@@ -416,7 +406,7 @@ p {
   margin: 0 0.25em;
 }
 
-/* --------------- SECTION DIVIDER & ANIMATIONS --------------- */
+/* Section Divider */
 .section-divider {
   width: 100%;
   padding: 2rem 0;
