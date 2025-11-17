@@ -4,26 +4,16 @@
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-  // --- ROBUST SCROLL-TO-TOP SOLUTION ---
-
-  // 1. Disable the browser's automatic scroll restoration.
+  // --- DEFINITIVE SCROLL-TO-TOP SOLUTION ---
+  // Disable the browser's automatic scroll restoration. This is the first critical step.
   if (window.history.scrollRestoration) {
     window.history.scrollRestoration = "manual";
+  } else {
+    // Fallback for older browsers.
+    window.onbeforeunload = () => {
+      window.scrollTo(0, 0);
+    };
   }
-
-  // 2. Create a function that forces the scroll to the top using multiple methods.
-  const forceScrollToTop = () => {
-    window.scrollTo(0, 0);
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-  };
-
-  // 3. Execute the function immediately on DOM load.
-  forceScrollToTop();
-
-  // 4. Execute it again when the entire page is fully loaded (images, etc.).
-  // This is the key to overriding stubborn browser behavior, especially on iOS.
-  window.addEventListener("load", forceScrollToTop);
 
   // Manages padding for the fixed navbar on mobile.
   const handleFixedNavbar = () => {
@@ -47,6 +37,9 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", handleFixedNavbar);
 
   const initAnimations = () => {
+    // Force scroll to top immediately when the animation engine starts.
+    window.scrollTo({ top: 0, behavior: "instant" });
+
     gsap.registerPlugin(ScrollTrigger);
 
     /**
@@ -250,6 +243,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
     });
+
+    // The final "insurance" scroll. This runs after a tiny delay
+    // to override any last-minute browser repaints.
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }, 100);
   };
 
   // Initialize animations after fonts are loaded for accurate calculations.
