@@ -8,7 +8,29 @@ document.addEventListener("DOMContentLoaded", () => {
   if (window.history.scrollRestoration) {
     window.history.scrollRestoration = "manual";
   }
-  window.scrollTo(0, 0);
+  // Use a small timeout to ensure this runs after the browser's own attempts.
+  setTimeout(() => window.scrollTo(0, 0), 10);
+
+  // Manages padding for the fixed navbar on mobile.
+  const handleFixedNavbar = () => {
+    const leftColumn = document.querySelector(".left-column");
+    const rightColumn = document.querySelector(".right-column");
+
+    if (!leftColumn || !rightColumn) return;
+
+    // Check if we are on the mobile view (less than the 800px breakpoint).
+    if (window.matchMedia("(max-width: 799px)").matches) {
+      const navbarHeight = leftColumn.offsetHeight;
+      rightColumn.style.paddingTop = `${navbarHeight}px`;
+    } else {
+      // Remove the padding on desktop.
+      rightColumn.style.paddingTop = "0";
+    }
+  };
+
+  // Run the function on load and on window resize.
+  handleFixedNavbar();
+  window.addEventListener("resize", handleFixedNavbar);
 
   const initAnimations = () => {
     gsap.registerPlugin(ScrollTrigger);
