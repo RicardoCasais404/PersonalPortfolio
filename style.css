@@ -89,13 +89,14 @@ button {
 }
 .right-column {
   width: 100%;
+  overflow-x: hidden;
 }
 
 /* Navigation (Left Column) */
 .navbar-logo {
   text-decoration: none;
   color: var(--color-text);
-  font-size: 2.2rem; /* REFINED: Slightly smaller to give more space */
+  font-size: 2.65rem;
   font-weight: 300;
   line-height: 1;
   padding: 0;
@@ -107,11 +108,18 @@ button {
 .navbar-logo:hover {
   transform: none;
 }
+.logo-symbol,
+.hero-symbol,
+.title-deco-diamond svg {
+  height: 1em;
+  width: auto;
+  transform: translateZ(0); /* Promotes to GPU for better anti-aliasing */
+}
 .nav-links {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 1rem; /* REFINED: Reduced gap for narrow screens */
+  gap: 1rem;
 }
 .nav-links a {
   position: relative;
@@ -135,7 +143,8 @@ button {
   background-color: var(--color-text);
   transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
-.nav-links a:hover::after {
+.nav-links a:hover::after,
+.nav-links a.active::after {
   width: 100%;
 }
 
@@ -159,7 +168,7 @@ button {
   z-index: 5;
 }
 .section:not(.header-hero) {
-  padding: 4rem 5%;
+  padding: 5rem 5%;
 }
 .content-container {
   max-width: 1100px;
@@ -176,7 +185,7 @@ button {
   text-transform: uppercase;
 }
 .main-title {
-  font-size: clamp(2.2rem, 10vw, 8rem); /* REFINED: Smaller minimum size */
+  font-size: clamp(2.2rem, 10vw, 8rem);
   font-weight: 800;
   line-height: 1.1;
   display: flex;
@@ -191,11 +200,11 @@ button {
   align-items: center;
 }
 .title-line-indented {
-  margin-left: 0; /* FIX: Remove indent on mobile to prevent overflow */
+  margin-left: 0;
 }
 .tagline {
   text-transform: uppercase;
-  font-size: clamp(1rem, 3vw, 1.5rem); /* REFINED: Smaller minimum size */
+  font-size: clamp(1rem, 3vw, 1.5rem);
   font-weight: 800;
   letter-spacing: -0.08em;
   margin-top: 1.5rem;
@@ -209,22 +218,19 @@ button {
   margin-bottom: 2rem;
 }
 p {
-  font-size: 1rem; /* REFINED: Slightly smaller body text for mobile */
+  font-size: 1rem;
   line-height: 1.7;
   max-width: 65ch;
   margin: 0;
 }
 .title-deco {
-  font-size: 0.8em;
+  font-size: 0.52em;
   line-height: 1;
   margin-left: 0.25em;
   display: inline-block;
   vertical-align: middle;
   font-weight: 300;
 }
-
-/* ... Other sections from About to Footer are mostly fine ... */
-/* I'm including them all for completeness. */
 
 /* About Section */
 .about .content-container {
@@ -276,7 +282,7 @@ p {
 /* Work Experience (Timeline) */
 .work-experience-title {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
 }
 .work-experience-title .title-line {
   justify-content: center;
@@ -284,10 +290,13 @@ p {
 .title-deco-diamond {
   font-size: 0.8em;
   margin-right: 0.25em;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 1;
 }
 .timeline-container {
   position: relative;
-  padding: 2rem 0;
+  padding: 0;
 }
 .timeline-middle {
   display: none;
@@ -422,7 +431,7 @@ p {
 /* Footer */
 .site-footer {
   width: 100%;
-  padding: 3rem 5%;
+  padding: 5rem 5%;
   min-height: auto;
 }
 .footer-content {
@@ -451,7 +460,7 @@ p {
 /* Section Divider */
 .section-divider {
   width: 100%;
-  padding: 2rem 0;
+  padding: 0;
 }
 .section-divider .content-container {
   max-width: 600px;
@@ -499,7 +508,7 @@ p {
     font-size: clamp(3rem, 10vw, 8rem);
   }
   .title-line-indented {
-    margin-left: 4%; /* Restore indent on desktop */
+    margin-left: 4%;
   }
   .skill-list-item {
     font-size: clamp(1.8rem, 6.5vw, 3.8rem);
@@ -525,7 +534,8 @@ p {
   }
 
   .navbar-logo {
-    font-size: 3.2rem;
+    font-size: 2.1rem;
+    padding: 0.5rem 0.8rem;
   }
   .navbar-logo:hover {
     transform: rotate(90deg);
@@ -537,6 +547,19 @@ p {
   .nav-links a {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
+  }
+  .nav-links a::after {
+    left: -0.4rem;
+    top: 0.5rem;
+    bottom: auto;
+    width: 1px;
+    height: 0;
+    transition: height 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+  .nav-links a:hover::after,
+  .nav-links a.active::after {
+    height: calc(100% - 1rem);
+    width: 1px;
   }
 
   .section:not(.header-hero) {
@@ -551,6 +574,12 @@ p {
     gap: 4rem;
   }
 
+  .work-experience-title {
+    margin-bottom: 4rem;
+  }
+  .timeline-container {
+    padding: 2rem 0;
+  }
   .timeline-middle {
     display: flex;
     position: absolute;
@@ -577,9 +606,16 @@ p {
     text-align: left;
   }
 
+  .site-footer {
+    padding: 3rem 5%;
+  }
   .footer-content {
     flex-direction: row;
     justify-content: space-between;
     text-align: left;
+  }
+
+  .section-divider {
+    padding: 2rem 0;
   }
 }

@@ -197,6 +197,23 @@ document.addEventListener("DOMContentLoaded", () => {
         },
       });
     }
+
+    // Navbar link active state manager.
+    const navLinks = gsap.utils.toArray(".nav-links a");
+    navLinks.forEach((link) => {
+      const section = document.querySelector(link.getAttribute("href"));
+      if (section) {
+        ScrollTrigger.create({
+          trigger: section,
+          start: "top 50%",
+          end: "bottom 50%",
+          onToggle: (self) =>
+            self.isActive
+              ? link.classList.add("active")
+              : link.classList.remove("active"),
+        });
+      }
+    });
   };
 
   // Initialize animations after fonts are loaded for accurate calculations.
