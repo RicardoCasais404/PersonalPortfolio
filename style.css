@@ -62,6 +62,12 @@ body {
   background-color: var(--color-background);
   color: var(--color-text);
   overflow-x: hidden;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+  display: none;
 }
 a,
 button {
