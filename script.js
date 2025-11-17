@@ -4,12 +4,26 @@
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Force scroll to top on page refresh to ensure consistent animation starts.
+  // --- ROBUST SCROLL-TO-TOP SOLUTION ---
+
+  // 1. Disable the browser's automatic scroll restoration.
   if (window.history.scrollRestoration) {
     window.history.scrollRestoration = "manual";
   }
-  // Use a small timeout to ensure this runs after the browser's own attempts.
-  setTimeout(() => window.scrollTo(0, 0), 10);
+
+  // 2. Create a function that forces the scroll to the top using multiple methods.
+  const forceScrollToTop = () => {
+    window.scrollTo(0, 0);
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  };
+
+  // 3. Execute the function immediately on DOM load.
+  forceScrollToTop();
+
+  // 4. Execute it again when the entire page is fully loaded (images, etc.).
+  // This is the key to overriding stubborn browser behavior, especially on iOS.
+  window.addEventListener("load", forceScrollToTop);
 
   // Manages padding for the fixed navbar on mobile.
   const handleFixedNavbar = () => {
