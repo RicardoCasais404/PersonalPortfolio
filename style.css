@@ -375,6 +375,35 @@ p {
   transform: translate(3px, -3px);
 }
 
+.test-cases .section-title {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 4rem;
+}
+.test-case-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  width: 100%;
+}
+.test-case-item {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+.test-case-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.test-case-description h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
 .skills .section-title {
   text-align: center;
   width: 100%;
@@ -646,6 +675,18 @@ p {
   .timeline-content.right {
     grid-column: 3 / 4;
     text-align: left;
+  }
+
+  .test-case-item {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+  .test-case-item:nth-child(even) .test-case-image {
+    order: 2;
+  }
+  .test-case-item:nth-child(even) .test-case-description {
+    order: 1;
+    text-align: right;
   }
 
   .site-footer {
