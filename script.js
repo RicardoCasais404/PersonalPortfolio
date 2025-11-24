@@ -101,22 +101,22 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // Animate the "Work Experience" title.
-    const projectsTitle = document.querySelector(".work-experience-title");
-    if (projectsTitle) {
-      gsap.set(projectsTitle, { autoAlpha: 0 });
+    // Animate the "Education" section title.
+    const educationTitle = document.querySelector(".work-experience-title");
+    if (educationTitle) {
+      gsap.set(educationTitle, { autoAlpha: 0 });
       ScrollTrigger.create({
-        trigger: projectsTitle,
+        trigger: educationTitle,
         start: "top 85%",
         end: "bottom 15%",
         onEnter: () =>
           gsap.fromTo(
-            projectsTitle,
+            educationTitle,
             { y: 200, autoAlpha: 0 },
             { y: 0, autoAlpha: 1, duration: 1.2, ease: "power3.out" }
           ),
         onLeave: () =>
-          gsap.to(projectsTitle, {
+          gsap.to(educationTitle, {
             y: -200,
             autoAlpha: 0,
             duration: 1.2,
@@ -124,12 +124,12 @@ document.addEventListener("DOMContentLoaded", () => {
           }),
         onEnterBack: () =>
           gsap.fromTo(
-            projectsTitle,
+            educationTitle,
             { y: -200, autoAlpha: 0 },
             { y: 0, autoAlpha: 1, duration: 1.2, ease: "power3.out" }
           ),
         onLeaveBack: () =>
-          gsap.to(projectsTitle, {
+          gsap.to(educationTitle, {
             y: 200,
             autoAlpha: 0,
             duration: 1.2,
@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Generic directional scroll animations for content sections.
     const animatedSections = gsap.utils.toArray(".animated-section");
     animatedSections.forEach((section) => {
-      if (section.id === "hero" || section.id === "projects") return;
+      if (section.id === "hero" || section.id === "education") return;
       const content = section.querySelector(".content-container");
       gsap.set(content, { autoAlpha: 0 });
       ScrollTrigger.create({
